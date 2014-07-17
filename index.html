@@ -13,10 +13,11 @@
         <div class='container'>
             <h2>Mrs. Responsive Table Generator</h2>
             <h4>v0.1</h4>
-            <button class='toggleAudio'><span>Loading</span> enhanced form experience</button>
+            <p class='enhance'>Enhance the form experience with <button class='audioChoice' data-track='0'>funk</button> or <button class='audioChoice' data-track='1'>intensity</button> ?</p>
+            <button class='toggleAudio hide'>Loading</button>
             <p class='instructions'>Input CSV or tab-delimited data (copy and paste from Excel or Google spreadsheets). <a class='demo' href='#'>Demo</a></p>
             <textarea class='input'></textarea>
-            <button class='generate'>Generate!</button>
+            <button class='generate'>Get started</button>
             <div class='after hide'>
                 <div class='promptHeaders'>
                     <h3>Select Column Types</h3>
@@ -31,17 +32,18 @@
                 <input class='hideColumns' placeholder='City,Price'>
                 <p class='instructions'>Zebra striping?</p>
                 <input type='checkbox' class='zebra'>
-                <button class='createTable'>Create table!</button>
-                <h3>Preview</h3>
-                <p class='updated invisible'>Updated!</p>
-                <div class='result'></div>
-                <h3>Output</h3>
-                <textarea class='output'></textarea>
+                <button class='createTable'>Create table</button>
+                <div class='final hide'>
+                    <h3>Preview</h3>
+                    <p class='updated invisible'>Updated</p>
+                    <div class='result'></div>
+                    <h3>Output</h3>
+                    <textarea class='output'></textarea>
+                </div>
             </div>
             <div class='credits'>
-                <p>Credits:</p>
                 <p>
-                    <a target='_blank' href='http://dig.ccmixter.org/files/VJ_Memes/35859'>Audio by Jeris</a>
+                    <a target='_blank' href='http://dig.ccmixter.org/files/VJ_Memes/35859'>Audio by Jeris <a target='_blank' href='http://dig.ccmixter.org/files/Psykick/40201'>&amp; Psykick</a>
                     <!-- http://dig.ccmixter.org/files/VJ_Memes/33361 -->
                 </p>
                 <p>
@@ -49,6 +51,9 @@
                 </p>
                 <p>
                     <a target='_blank' href='https://github.com/russellgoldenberg/mrs-responsive-table-generator'>Upcoming features &amp; issues/feature requests</a>
+                </p>
+                <p style='margin-top:2em;'>
+                    <a target='_blank' href='http://russellgoldenberg.com'><img src='http://russellgoldenberg.com/img/codenberg.png'></a>
                 </p>
             </div>
     </body>

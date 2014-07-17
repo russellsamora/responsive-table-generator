@@ -6,7 +6,6 @@
 
 	function init() {
 		bindEvents();
-		createAudio();
 	}
 
 	//setup all event listeners
@@ -44,6 +43,11 @@
 			$('.output').val('');
 			customize(mobileRows, zebra, hideColumns);
 		});
+
+		$('.audioChoice').on('click', function() {
+			var t = $(this).attr('data-track');
+			createAudio(+t);
+		})
 	}
 
 	//grab the text from the input textarea and start parsing
@@ -172,6 +176,8 @@
 		$table.append($thead);
 		$table.append($tbody);
 		$('.result').empty().append($table);
+		$('.final').removeClass('hide');
+		$('.createTable').text('Update table');
 
 		//add zebra striping
 		if(zebra) {
@@ -212,14 +218,16 @@
 		});
 	}
 
-	function createAudio() {
+	function createAudio(track) {
+		$('.enhance').addClass('hide');
+		$('.toggleAudio').removeClass('hide');
 		var sound = new Howl({
-			urls: ['audio/track0.mp3', 'audio/track0.ogg'],
+			urls: ['audio/track' + track + '.mp3', 'audio/track' + track + '.ogg'],
 			loop: true,
 			volume: 0.5,
 			onload: function() {
 				sound.isPlaying = false;
-				$('.toggleAudio span').text('Click to enable');
+				$('.toggleAudio').text('Play');
 				$('.toggleAudio').on('click', function(e) {
 					e.preventDefault();
 
@@ -227,18 +235,19 @@
 						//pause
 						sound.isPlaying = false;
 						sound.pause();
-						$(this).find('span').text('Click to enable');
+						$(this).text('Play');
 					} else {
 						//play
 						sound.isPlaying = true;
 						sound.play();
-						$(this).find('span').text('Click to disable');
+						$(this).text('Pause');
 					}
 					return false;
 				});
 			},
 			onloaderror: function() {
 				$('.toggleAudio').remove();
+				$('.enhance').remove();
 			}
 		});
 	}
