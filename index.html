@@ -7,7 +7,7 @@
         <meta name='description' content=''>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <link rel='stylesheet' href='style.css'>
-        <link rel='stylesheet' href='responsive-table.css'>
+        <!-- <link rel='stylesheet' href='responsive-table.css'> -->
     </head>
     <body>
         <div class='container'>
@@ -38,6 +38,13 @@
                     Columns to hide on mobile? (comma-delimited, column header names as they appear above)
                 </p>
                 <input class='hideColumns' placeholder='City,Price'>
+                <p class='instructions'>
+                    At what breakpoint (in pixels) to switch to mobile version?
+                </p>
+                <div class='breakpointContainer'>
+                    <input id='breakpointSlider' type='range' min='240' max='1200' step='1' value='500'>
+                    <input id='breakpointText' value='500px'>
+                </div>
                 <p class='instructions'>Zebra striping?</p>
                 <input type='checkbox' class='zebra'>
                 <button class='createTable'>Create table</button>

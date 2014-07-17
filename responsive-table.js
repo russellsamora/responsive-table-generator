@@ -2,6 +2,7 @@
 	var _output,
 		_failed,
 		_data,
+		_breakpoint,
 		_demo = 'Name\tCity\tRating\tPrice\nSuperette\tHolliston\t4.5\t$8.00\nTasty Treat\tAshland\t2.0\t$5.00\nBig Fresh\tFramingham\t5.0\t$9.00\nSeta\'s Cafe\tWatertown\t3.8\t$7.50';
 
 	function init() {
@@ -37,11 +38,14 @@
 
 		$('.createTable').on('click', function() {
 			getColumnTypes();
-			var mobileRows = $('.mobileRows').val();
-			var zebra = $('.zebra:checked').val() ? true : false;
-			var hideColumns = $('.hideColumns').val();
+			var input = {
+				mobileRows: $('.mobileRows').val(),
+				zebra: $('.zebra:checked').val() ? true : false,
+				hideColumns: $('.hideColumns').val(),
+				breakpoint: $('#breakpointText').val()
+			};
 			$('.output').val('');
-			customize(mobileRows, zebra, hideColumns);
+			customize(input);
 		});
 
 		$('.audioChoice').on('click', function() {
@@ -54,6 +58,10 @@
 			$('html, body').animate({
 				scrollTop: scrollTo
 			}, 250);
+		});
+
+		$('#breakpointSlider').on('input', function() {
+			$('#breakpointText').val(this.value + 'px');
 		});
 	}
 
@@ -125,13 +133,13 @@
 		}
 	}
 
-	function createTable(mobileRows, zebra, hideColumns) {
+	function createTable(input) {
 		var $table = $('<table class="responsive-table"></table>');
 		var $thead = $('<thead></thead>');
 		var $tbody = $('<tbody></tbody>');
 
 		var classesTable = 'responsive-table';
-		if(zebra) {
+		if(input.zebra) {
 			classesTable += ' zebra';
 		}
 		_output = '<style>\n' + css + '\n</style>\n';
@@ -140,7 +148,7 @@
 		//headers
 		for (var i = 0; i < _data.headers.length; i++) {
 			var valTh = _data.headers[i].toLowerCase();
-			var classesTh = hideColumns[valTh] ? 'hideMobile ' : '';
+			var classesTh = input.hideColumns[valTh] ? 'hideMobile ' : '';
 			classesTh += _data.className[i];
 
 			var htmlTh = '<th class="'+ classesTh + '">' + _data.headers[i] + '</th>';
@@ -156,8 +164,8 @@
 		for (var a = 0; a < _data.headers.length; a++) {
 			var row = _data.rows[a];
 			var hideMobile = '';
-			if(mobileRows) {
-				hideMobile = a < mobileRows ? ' class="hideMobile"' : '';
+			if(input.mobileRows) {
+				hideMobile = a < input.mobileRows ? ' class="hideMobile"' : '';
 			}
 			var $tr = $('<tr' + hideMobile + '></tr>');
 
@@ -166,7 +174,7 @@
 			//cols
 			for (var b = 0; b < row.length; b++) {
 				var valCol = _data.headers[b].toLowerCase();
-				var classesTd = hideColumns[valCol] ? 'hideMobile ' : '';
+				var classesTd = input.hideColumns[valCol] ? 'hideMobile ' : '';
 				classesTd += _data.className[b];
 
 				var htmlTd = '<td class="' + classesTd + '" data-title="' + valCol + '">' + row[b] + '</td>';
@@ -186,7 +194,7 @@
 		//output preview
 		$table.append($thead);
 		$table.append($tbody);
-		$('.result').empty().append($table);
+		$('.result').empty().append('<style>' + window.css + '<style>').append($table);
 		$('.final').removeClass('hide');
 		$('.createTable').text('Update table');
 
@@ -196,7 +204,7 @@
 		}, 250);
 
 		//add zebra striping
-		if(zebra) {
+		if(input.zebra) {
 			$('.responsive-table').addClass('zebra');	
 		}
 
@@ -206,24 +214,26 @@
 		}, 1500);
 	}
 
-	function customize(mobileRows, zebra, hideColumns) {
-		if(mobileRows) {
-			mobileRows = +mobileRows;
-			if(isNaN(mobileRows)) {
-				mobileRows = false;
+	function customize(input) {
+		if(input.mobileRows) {
+			input.mobileRows = +input.mobileRows;
+			if(isNaN(input.mobileRows)) {
+				input.mobileRows = false;
 			}
 		}
-		if(hideColumns) {
-			var names = hideColumns.split(',');
-			hideColumns = {};
+		if(input.hideColumns) {
+			var names = input.hideColumns.split(',');
+			input.hideColumns = {};
 			for(var i = 0; i < names.length; i++) {
-				hideColumns[names[i].trim().toLowerCase()] = true;
+				input.hideColumns[names[i].trim().toLowerCase()] = true;
 			}
 		} else {
-			hideColumns = {};
+			input.hideColumns = {};
 		}
 
-		createTable(mobileRows, zebra, hideColumns);
+		window.css = 'table.responsive-table {\n\tmargin: 0 0 1em 0;\n\twidth: 100%;\n\tfont-family: Helvetica, Arial, sans-serif;\n\tfont-size: 1em;\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\ntable.responsive-table * {\n\t-moz-box-sizing: border-box;\n\tbox-sizing: border-box;\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n\ttext-align: left;\n\tcolor: #333;\n}\ntable.responsive-table thead {\n\tborder-bottom: 1px solid #ccc;\n}\ntable.responsive-table th {\n\tfont-weight: bold;\n\tpadding: 0.25em;\n}\ntable.responsive-table td {\n\tpadding: 0.25em;\n\tfont-size: 0.9em;\n}\ntable.responsive-table tr {\n\tborder-bottom: 1px solid #ccc;\n}\ntable.responsive-table .numeric {\n\ttext-align: right;\n}\ntable.responsive-table.zebra tr:nth-child(even) {\n\tbackground: #efefef;\n}\n\n@media screen and (max-width:' + input.breakpoint + ') {\ntable.responsive-table {\n\tdisplay: block;\n\twidth: 100%;\n}\ntable.responsive-table .numeric {\n\ttext-align: left;\n}\ntable.responsive-table tr.hideMobile, table.responsive-table th.hideMobile, table.responsive-table td.hideMobile {\n\tdisplay: none;\n}\ntable.responsive-table thead {\n\tdisplay: none;\n}\ntable.responsive-table tbody {\n\tdisplay: block;\n\twidth: 100%;\n}\ntable.responsive-table tr, table.responsive-table th, table.responsive-table td {\n\tdisplay: block;\n\tpadding: 0;\n}\ntable.responsive-table th[data-title]:before, table.responsive-table td[data-title]:before {\n\tcontent: attr(data-title) ":\\00A0";\n\tfont-weight: bold;\n}\ntable.responsive-table tr {\n\tborder-bottom: 1px solid #ccc;\n\tmargin: 0;\n\tpadding: 0.5em 0;\n}\ntable.responsive-table tr:nth-child(even) {\n\tbackground: none;\n}\ntable.responsive-table td {\n\tpadding: 0.25em 0.5em 0 0.5em;\n}\ntable.responsive-table td:empty {\n\tdisplay: none;\n}\ntable.responsive-table td:first-child {\n\tfont-size: 1.1em;\n\tfont-weight: bold;\n}\ntable.responsive-table td:first-child:before {\n\tcontent: "";\n}\n}';
+
+		createTable(input);
 	}
 
 	function getColumnTypes() {
@@ -270,5 +280,3 @@
 
 	init();
 })();
-
-window.css = 'table.responsive-table {\n\tmargin: 0 0 1em 0;\n\twidth: 100%;\n\tfont-family: Helvetica, Arial, sans-serif;\n\tfont-size: 1em;\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\ntable.responsive-table * {\n\t-moz-box-sizing: border-box;\n\tbox-sizing: border-box;\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n\ttext-align: left;\n\tcolor: #333;\n}\ntable.responsive-table thead {\n\tborder-bottom: 1px solid #ccc;\n}\ntable.responsive-table th {\n\tfont-weight: bold;\n\tpadding: 0.25em;\n}\ntable.responsive-table td {\n\tpadding: 0.25em;\n\tfont-size: 0.9em;\n}\ntable.responsive-table tr {\n\tborder-bottom: 1px solid #ccc;\n}\ntable.responsive-table .numeric {\n\ttext-align: right;\n}\ntable.responsive-table.zebra tr:nth-child(even) {\n\tbackground: #efefef;\n}\n\n@media screen and (max-width: 500px) {\ntable.responsive-table {\n\tdisplay: block;\n\twidth: 100%;\n}\ntable.responsive-table .numeric {\n\ttext-align: left;\n}\ntable.responsive-table tr.hideMobile, table.responsive-table th.hideMobile, table.responsive-table td.hideMobile {\n\tdisplay: none;\n}\ntable.responsive-table thead {\n\tdisplay: none;\n}\ntable.responsive-table tbody {\n\tdisplay: block;\n\twidth: 100%;\n}\ntable.responsive-table tr, table.responsive-table th, table.responsive-table td {\n\tdisplay: block;\n\tpadding: 0;\n}\ntable.responsive-table th[data-title]:before, table.responsive-table td[data-title]:before {\n\tcontent: attr(data-title) ":\00A0";\n\tfont-weight: bold;\n}\ntable.responsive-table tr {\n\tborder-bottom: 1px solid #ccc;\n\tmargin: 0;\n\tpadding: 0.5em 0;\n}\ntable.responsive-table tr:nth-child(even) {\n\tbackground: none;\n}\ntable.responsive-table td {\n\tpadding: 0.25em 0.5em 0 0.5em;\n}\ntable.responsive-table td:empty {\n\tdisplay: none;\n}\ntable.responsive-table td:first-child {\n\tfont-size: 1.1em;\n\tfont-weight: bold;\n}\ntable.responsive-table td:first-child:before {\n\tcontent: "";\n}\n}';
