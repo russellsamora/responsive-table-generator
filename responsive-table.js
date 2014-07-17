@@ -47,7 +47,14 @@
 		$('.audioChoice').on('click', function() {
 			var t = $(this).attr('data-track');
 			createAudio(+t);
-		})
+		});
+
+		$('.modify').on('click', function() {
+			var scrollTo = $('.after').offset().top - 10;
+			$('html, body').animate({
+				scrollTop: scrollTo
+			}, 250);
+		});
 	}
 
 	//grab the text from the input textarea and start parsing
@@ -111,6 +118,10 @@
 				$('.headerChoices').append(html);
 			}
 			$('.after').removeClass('hide');
+			var scrollTo = $('.after').offset().top - 10;
+			$('html, body').animate({
+				scrollTop: scrollTo
+			}, 250);
 		}
 	}
 
@@ -178,6 +189,11 @@
 		$('.result').empty().append($table);
 		$('.final').removeClass('hide');
 		$('.createTable').text('Update table');
+
+		var scrollTo = $('.final').offset().top - 10;
+		$('html, body').animate({
+			scrollTop: scrollTo
+		}, 250);
 
 		//add zebra striping
 		if(zebra) {

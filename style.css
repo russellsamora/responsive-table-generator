@@ -8,6 +8,7 @@ a {
 }
 p {
 	margin: 0.25em 0;
+	line-height: 1.4;
 }
 body {
 	font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
@@ -30,10 +31,10 @@ button {
 	cursor: pointer;
 	background: #d44;
 	color: #fff;
-	width: 100px;
+	width: auto;
 	text-transform: uppercase;
 	margin: 0.5em auto;
-	padding: 0.5em;
+	padding: 0.5em 1em;
 	border: none;
 }
 .container {
@@ -84,12 +85,6 @@ input {
 .toggleAudio {
 	margin-bottom: 1em;
 }
-.credits {
-	text-align: center;
-	border-top: 1px solid #ccc;
-	margin-top: 8em;
-	margin-bottom: 4em;
-}
 .headerChoices {
 	margin-bottom: 0.5em;
 }
@@ -119,4 +114,17 @@ input {
 .buttonChoices button.currentChoice {
 	background: #d44;
 	color: #fff;
+}
+.intro {
+	font-size: 0.9em;
+}
+.credits {
+	border-top: 1px solid #ccc;
+	margin-top: 8em;
+	margin-bottom: 4em;
+	font-size: 0.9em;
+}
+.russell {
+	 margin-top: 2em;
+	 text-align: center;
 }
