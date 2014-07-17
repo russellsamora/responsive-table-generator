@@ -67,3 +67,12 @@ input {
 	text-align: center;
 	color: #4d4;
 }
+.toggleAudio {
+	width: auto;
+	margin-bottom: 2em;
+}
+.credits {
+	text-align: center;
+	border-top: 1px solid #ccc;
+	margin-top: 8em;
+}

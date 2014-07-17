@@ -6,6 +6,7 @@
 
 	function init() {
 		bindEvents();
+		createAudio();
 	}
 
 	//setup all event listeners
@@ -218,6 +219,37 @@
 		}
 
 		createTable(mobileRows, zebra, hideColumns);
+	}
+
+	function createAudio() {
+		var sound = new Howl({
+			urls: ['audio/track0.mp3', 'audio/track0.ogg'],
+			loop: true,
+			volume: 0.5,
+			onload: function() {
+				sound.isPlaying = false;
+				$('.toggleAudio span').text('Click to enable');
+				$('.toggleAudio').on('click', function(e) {
+					e.preventDefault();
+
+					if(sound.isPlaying) {
+						//pause
+						sound.isPlaying = false;
+						sound.pause();
+						$(this).find('span').text('Click to enable');
+					} else {
+						//play
+						sound.isPlaying = true;
+						sound.play();
+						$(this).find('span').text('Click to disable');
+					}
+					return false;
+				});
+			},
+			onloaderror: function() {
+				$('.toggleAudio').remove();
+			}
+		});
 	}
 
 	init();
