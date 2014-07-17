@@ -8,3 +8,8 @@ HTML/CSS only responsive table generator for your next table.
 
 ### Browser compatibility
 Probably everything.
+
+### TODO
+*format more number types
+*sort option if you really desire javascript
+*style options
