@@ -10,6 +10,7 @@ HTML/CSS only responsive table generator for your next table.
 Probably everything.
 
 ### TODO
-* format more number types
-* sort option if you really desire javascript
-* style options
+* detect/format various number types (dates, times, zips, etc)
+* styling options
+* sort option if you really desire javascript (but as little as possible)
+* more music!
