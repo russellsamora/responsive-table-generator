@@ -25,20 +25,24 @@
 			return false;
 		});
 
-		$('.customize').on('click', function(e) {
-			e.preventDefault();	
+		$('.demo').on('click', function(e) {
+			e.preventDefault();
+			$('.input').val(_demo);
+			return false;
+		});
+
+		$('.headerChoices').on('click', 'button', function() {
+			$(this).siblings().removeClass('currentChoice');
+			$(this).addClass('currentChoice');
+		});
+
+		$('.createTable').on('click', function() {
+			getColumnTypes();
 			var mobileRows = $('.mobileRows').val();
 			var zebra = $('.zebra:checked').val() ? true : false;
 			var hideColumns = $('.hideColumns').val();
 			$('.output').val('');
 			customize(mobileRows, zebra, hideColumns);
-			return false;
-		});
-
-		$('.demo').on('click', function(e) {
-			e.preventDefault();
-			$('.input').val(_demo);
-			return false;
 		});
 	}
 
@@ -55,7 +59,7 @@
 			_failed = 'no rows';
 		}
 		
-		outputResult();
+		displayHeaderTypes();
 	}
 
 	//set the header names from the first row
@@ -89,40 +93,19 @@
 		var cols = line.split('\t');
 		for(var i = 0; i < cols.length; i++) {
 			var val = cols[i].trim();
-			_data.className[i] = checkNumber(val) ? 'numeric' : 'textual';
 		}
 	}
 
-	//return if a column value is a number or not
-	function checkNumber(val) {
-		//TODO add date, etc
-		var hasDollarSign = (val.indexOf('$') === 0);
-		if(hasDollarSign) {
-			val = val.substring(1);
-		}
-		var num = +val;
-		return !isNaN(num);
-	}
-
-	function createRowsHTML() {
-		// _output += '\t<tbody>\n';
-		// for(var i = 0; i < lines.length; i++) {
-		// 	var l = lines[i];
-		// 	var cols = lines[i].split('\t');
-		// 	_output += '\t\t<tr>\n';
-		// 	for(var j = 0; j < cols.length; j++) {
-		// 		_output += addRow(cols[j].trim(), headers[j]);
-		// 	}
-		// 	_output += '\t\t</tr>\n';
-		// }
-		// _output += '\t</tbody>\n</table>';
-	}
-
-	function outputResult() {
+	//prompt user to choose types (text or number)
+	function displayHeaderTypes() {
 		if(_failed) {
 			alert('error: ' + _failed);
 		} else {
-			createTable(false, false, {});
+			for(var i = 0; i < _data.headers.length; i++) {
+				var html = '<div class="headerChoice"><span>' + _data.headers[i] + ':</span> ';
+				html += '<div class="buttonChoices"><button class="currentChoice">Text</button><button>Number</button></div></div>';
+				$('.headerChoices').append(html);
+			}
 			$('.after').removeClass('hide');
 		}
 	}
@@ -219,6 +202,14 @@
 		}
 
 		createTable(mobileRows, zebra, hideColumns);
+	}
+
+	function getColumnTypes() {
+		$('.headerChoice').each(function(i) {
+			var el = $(this).find('.currentChoice');
+			var t = el.text().toLowerCase().trim();
+			_data.className[i] = t;
+		});
 	}
 
 	function createAudio() {

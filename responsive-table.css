@@ -32,7 +32,7 @@ table.responsive-table td {
 table.responsive-table tr {
   border-bottom: 1px solid #ccc;
 }
-table.responsive-table .numeric {
+table.responsive-table .number {
   text-align: right;
 }
 table.responsive-table.zebra tr:nth-child(even) {
@@ -43,7 +43,7 @@ table.responsive-table {
   display: block;
   width: 100%;
 }
-table.responsive-table .numeric {
+table.responsive-table .number {
   text-align: left;
 }
 table.responsive-table tr.hideMobile, table.responsive-table th.hideMobile, table.responsive-table td.hideMobile {
