@@ -6,7 +6,6 @@ table.responsive-table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
 table.responsive-table * {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -19,7 +18,9 @@ table.responsive-table * {
   text-align: left;
   color: #333;
 }
-
+table.responsive-table thead {
+  border-bottom: 1px solid #ccc;
+}
 table.responsive-table th {
   font-weight: bold;
   padding: 0.25em;
@@ -37,7 +38,6 @@ table.responsive-table .numeric {
 table.responsive-table.zebra tr:nth-child(even) {
   background: #efefef;
 }
-
 @media screen and (max-width: 500px) {
 table.responsive-table {
   display: block;
