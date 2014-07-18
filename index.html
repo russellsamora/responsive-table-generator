@@ -11,62 +11,71 @@
     </head>
     <body>
         <div class='container'>
-            <h2>Ms. Responsive Table Generator v0.2</h2>
-            <p class='intro'>
-                A complete HTML/CSS only* solution for quick &amp; elegant responsive tables. Code is unminified to easily override styles.
-            </p>
-            <p class='enhance'>
-                Enhance your form experience with <button class='audioChoice' data-track='0'>funk</button> or <button class='audioChoice' data-track='1'>intensity</button> ?
-            </p>
-            <button class='toggleAudio hide'>Loading</button>
-            <p class='instructions'>
-                Input CSV or tab-delimited data (copy and paste from Excel or Google spreadsheets). 
-                <a class='demo' href='#'>Demo</a>
-            </p>
-            <textarea class='input'></textarea>
-            <button class='generate'>Get started</button>
-            <div class='after hide'>
-                <div class='promptHeaders'>
-                    <h3>Select Column Types</h3>
-                    <p class='instructions'>Choose the type of value for each column.</p>
-                    <div class='headerChoices'></div>
-                </div>
-                <h3>Customize</h3>
-                <p class='instructions'>Max # of rows to show on mobile? (suggeted: 5-10)</p>
-                <input class='mobileRows' placeholder='5'>
-                <p class='instructions'>
-                    Columns to hide on mobile? (comma-delimited, column header names as they appear above)
+            <section>
+                <h2>Ms. Responsive Table Generator v0.2</h2>
+                <p class='intro'>
+                    A complete HTML/CSS only* solution for quick &amp; elegant responsive tables. Code is unminified to easily override styles.
                 </p>
-                <input class='hideColumns' placeholder='City,Price'>
-                <p class='instructions'>
-                    At what breakpoint (in pixels) to switch to mobile version?
+                <p class='enhance'>
+                    Enhance your form experience with <button class='audioChoice' data-track='0'>funk</button> or <button class='audioChoice' data-track='1'>intensity</button> ?
                 </p>
-                <div class='breakpointContainer'>
-                    <input id='breakpointSlider' type='range' min='240' max='1200' step='1' value='500'>
-                    <input id='breakpointText' value='500px'>
+                <button class='toggleAudio hide'>Loading</button>
+                <p class='instructions'>
+                    Input CSV or tab-delimited data (copy and paste from Excel or Google spreadsheets). 
+                    <a class='demo' href='#'>Demo</a>
+                </p>
+                <textarea class='input'></textarea>
+                <button class='generate'>Get started</button>
+            </section>
+            <section>
+                <div class='after hide'>
+                    <div class='promptHeaders'>
+                        <h3>Select Column Types</h3>
+                        <p class='instructions'>Choose the type of value for each column.</p>
+                        <div class='headerChoices'></div>
+                    </div>
+                    <h3>Customize</h3>
+                    <p class='instructions'>Max # of rows to show on mobile? (suggeted: 5-10)</p>
+                    <input class='mobileRows' placeholder='5'>
+                    <p class='instructions'>
+                        Columns to hide on mobile? (comma-delimited, column header names as they appear above)
+                    </p>
+                    <input class='hideColumns' placeholder='City,Price'>
+                    <p class='instructions'>
+                        At what breakpoint (in pixels) to switch to mobile version?
+                    </p>
+                    <div class='breakpointContainer'>
+                        <input id='breakpointSlider' type='range' min='240' max='1200' step='1' value='500'>
+                        <input id='breakpointText' value='500px'>
+                    </div>
+                    <p class='instructions'>Zebra striping?</p>
+                    <input type='checkbox' class='zebra'>
+                    <button class='createTable'>Create table</button>
+                    <div class='final hide'>
+                        <h3>Preview</h3>
+                        <p class='updated invisible'>Updated</p>
+                    </div>
                 </div>
-                <p class='instructions'>Zebra striping?</p>
-                <input type='checkbox' class='zebra'>
-                <button class='createTable'>Create table</button>
+            </section>
+            <div class='result final hide'></div>
+            <section>
                 <div class='final hide'>
-                    <h3>Preview</h3>
-                    <p class='updated invisible'>Updated</p>
-                    <div class='result'></div>
                     <h3>Output</h3>
                     <textarea class='output'></textarea>
                     <button class='modify'>Modify settings</button>
                 </div>
-            </div>
-            <div class='credits'>
-                <p class='note'>
-                    *Note: Sortable feature requires JavaScript (coming soon)
-                </p>
-                <p>Audio by <a target='_blank' href='http://dig.ccmixter.org/files/VJ_Memes/35859'>Jeris</a> and <a target='_blank' href='http://dig.ccmixter.org/files/Psykick/40201'>Psykick</a>. Inspired by <a target='_blank' href='http://blog.apps.npr.org/2014/05/09/responsive-data-tables.html'>NPR</a>. See <a target='_blank' href='https://github.com/russellgoldenberg/ms-responsive-table-generator'>github repo</a> for upcoming features &amp; and to submit issues and/or feature requests.
-                </p>
-                <p class='russell'>
-                    <a target='_blank' href='http://russellgoldenberg.com'><img src='http://russellgoldenberg.com/img/codenberg.png'></a>
-                </p>
-            </div>
+                <div class='credits'>
+                    <p class='note'>
+                        *Note: Sortable feature requires JavaScript (coming soon)
+                    </p>
+                    <p>Audio by <a target='_blank' href='http://dig.ccmixter.org/files/VJ_Memes/35859'>Jeris</a> and <a target='_blank' href='http://dig.ccmixter.org/files/Psykick/40201'>Psykick</a>. Inspired by <a target='_blank' href='http://blog.apps.npr.org/2014/05/09/responsive-data-tables.html'>NPR</a>. See <a target='_blank' href='https://github.com/russellgoldenberg/ms-responsive-table-generator'>github repo</a> for upcoming features &amp; and to submit issues and/or feature requests.
+                    </p>
+                    <p class='russell'>
+                        <a target='_blank' href='http://russellgoldenberg.com'><img src='http://russellgoldenberg.com/img/codenberg.png'></a>
+                    </p>
+                </div>
+            </section>
+        </div>
     </body>
     <script src='jquery.min.js'></script>
     <script src='howler.js'></script>

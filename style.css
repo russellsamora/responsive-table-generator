@@ -26,6 +26,10 @@ h4 {
 	margin-top: 0;
 	text-align: center;
 }
+section {
+	max-width: 760px;
+	margin: 0 auto;
+}
 button {
 	display: block;
 	cursor: pointer;
@@ -38,7 +42,7 @@ button {
 	border: none;
 }
 .container {
-	max-width: 760px;
+	max-width: 1080px;
 	margin: 0 auto;
 }
 textarea {
