@@ -162,11 +162,11 @@
 		_output += '\n\t</thead>\n\t<tbody>';
 
 		//rows
-		for (var a = 0; a < _data.headers.length; a++) {
+		for (var a = 0; a < _data.rows.length; a++) {
 			var row = _data.rows[a];
 			var hideMobile = '';
 			if(input.mobileRows) {
-				hideMobile = a < input.mobileRows ? ' class="hideMobile"' : '';
+				hideMobile = a < input.mobileRows ? '' : ' class="hideMobile"';
 			}
 			var $tr = $('<tr' + hideMobile + '></tr>');
 
