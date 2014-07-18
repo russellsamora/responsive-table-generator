@@ -150,7 +150,7 @@
 		for (var i = 0; i < _data.headers.length; i++) {
 			var valTh = _data.headers[i].toLowerCase();
 			var classesTh = input.hideColumns[valTh] ? 'hideMobile ' : '';
-			classesTh += _data.className[i];
+			classesTh += _data.className[i] + ' responsive-th';
 
 			var htmlTh = '<th class="'+ classesTh + '">' + _data.headers[i] + '</th>';
 			
