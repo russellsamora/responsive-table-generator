@@ -3,6 +3,7 @@
 		_failed,
 		_data,
 		_breakpoint,
+		_css,
 		_demo = 'Name\tCity\tRating\tPrice\nSuperette\tHolliston\t4.5\t$8.00\nTasty Treat\tAshland\t2.0\t$5.00\nBig Fresh\tFramingham\t5.0\t$9.00\nSeta\'s Cafe\tWatertown\t3.8\t$7.50';
 
 	function init() {
@@ -194,7 +195,7 @@
 		//output preview
 		$table.append($thead);
 		$table.append($tbody);
-		$('.result').empty().append('<style>' + window.css + '<style>').append($table);
+		$('.result').empty().append('<style>' + _css + '<style>').append($table);
 		$('.final').removeClass('hide');
 		$('.createTable').text('Update table');
 
@@ -231,7 +232,7 @@
 			input.hideColumns = {};
 		}
 
-		window.css = 'table.responsive-table {\n\tmargin: 0 0 1em 0;\n\twidth: 100%;\n\tfont-family: Helvetica, Arial, sans-serif;\n\tfont-size: 1em;\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\ntable.responsive-table * {\n\t-moz-box-sizing: border-box;\n\tbox-sizing: border-box;\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n\ttext-align: left;\n\tcolor: #333;\n}\ntable.responsive-table thead {\n\tborder-bottom: 1px solid #ccc;\n}\ntable.responsive-table th {\n\tfont-weight: bold;\n\tpadding: 0.25em;\n}\ntable.responsive-table td {\n\tpadding: 0.25em;\n\tfont-size: 0.9em;\n}\ntable.responsive-table tr {\n\tborder-bottom: 1px solid #ccc;\n}\ntable.responsive-table .numeric {\n\ttext-align: right;\n}\ntable.responsive-table.zebra tr:nth-child(even) {\n\tbackground: #efefef;\n}\n\n@media screen and (max-width:' + input.breakpoint + ') {\ntable.responsive-table {\n\tdisplay: block;\n\twidth: 100%;\n}\ntable.responsive-table .numeric {\n\ttext-align: left;\n}\ntable.responsive-table tr.hideMobile, table.responsive-table th.hideMobile, table.responsive-table td.hideMobile {\n\tdisplay: none;\n}\ntable.responsive-table thead {\n\tdisplay: none;\n}\ntable.responsive-table tbody {\n\tdisplay: block;\n\twidth: 100%;\n}\ntable.responsive-table tr, table.responsive-table th, table.responsive-table td {\n\tdisplay: block;\n\tpadding: 0;\n}\ntable.responsive-table th[data-title]:before, table.responsive-table td[data-title]:before {\n\tcontent: attr(data-title) ":\\00A0";\n\tfont-weight: bold;\n}\ntable.responsive-table tr {\n\tborder-bottom: 1px solid #ccc;\n\tmargin: 0;\n\tpadding: 0.5em 0;\n}\ntable.responsive-table tr:nth-child(even) {\n\tbackground: none;\n}\ntable.responsive-table td {\n\tpadding: 0.25em 0.5em 0 0.5em;\n}\ntable.responsive-table td:empty {\n\tdisplay: none;\n}\ntable.responsive-table td:first-child {\n\tfont-size: 1.1em;\n\tfont-weight: bold;\n}\ntable.responsive-table td:first-child:before {\n\tcontent: "";\n}\n}';
+		_css = 'table.responsive-table {\n\tmargin: 0 0 1em 0;\n\twidth: 100%;\n\tfont-family: Helvetica, Arial, sans-serif;\n\tfont-size: 1em;\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\ntable.responsive-table * {\n\t-moz-box-sizing: border-box;\n\tbox-sizing: border-box;\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n\ttext-align: left;\n\tcolor: #333;\n}\ntable.responsive-table thead {\n\tborder-bottom: 1px solid #ccc;\n}\ntable.responsive-table th {\n\tfont-weight: bold;\n\tpadding: 0.25em;\n}\ntable.responsive-table td {\n\tpadding: 0.25em;\n\tfont-size: 0.9em;\n}\ntable.responsive-table tr {\n\tborder-bottom: 1px solid #ccc;\n}\ntable.responsive-table .number {\n\ttext-align: right;\n}\ntable.responsive-table.zebra tr:nth-child(even) {\n\tbackground: #efefef;\n}\n\n@media screen and (max-width:' + input.breakpoint + ') {\ntable.responsive-table {\n\tdisplay: block;\n\twidth: 100%;\n}\ntable.responsive-table .number {\n\ttext-align: left;\n}\ntable.responsive-table tr.hideMobile, table.responsive-table th.hideMobile, table.responsive-table td.hideMobile {\n\tdisplay: none;\n}\ntable.responsive-table thead {\n\tdisplay: none;\n}\ntable.responsive-table tbody {\n\tdisplay: block;\n\twidth: 100%;\n}\ntable.responsive-table tr, table.responsive-table th, table.responsive-table td {\n\tdisplay: block;\n\tpadding: 0;\n}\ntable.responsive-table th[data-title]:before, table.responsive-table td[data-title]:before {\n\tcontent: attr(data-title) ":\\00A0";\n\tfont-weight: bold;\n}\ntable.responsive-table tr {\n\tborder-bottom: 1px solid #ccc;\n\tmargin: 0;\n\tpadding: 0.5em 0;\n}\ntable.responsive-table tr:nth-child(even) {\n\tbackground: none;\n}\ntable.responsive-table td {\n\tpadding: 0.25em 0.5em 0 0.5em;\n}\ntable.responsive-table td:empty {\n\tdisplay: none;\n}\ntable.responsive-table td:first-child {\n\tfont-size: 1.1em;\n\tfont-weight: bold;\n}\ntable.responsive-table td:first-child:before {\n\tcontent: "";\n}\n}';
 
 		createTable(input);
 	}
