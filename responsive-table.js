@@ -143,7 +143,7 @@
 		if(input.zebra) {
 			classesTable += ' zebra';
 		}
-		_output = '<style>\n' + css + '\n</style>\n';
+		_output = '<style>\n' + _css + '\n</style>\n';
 		_output += '<table class="' + classesTable + '">\n\t<thead>';
 
 		//headers
