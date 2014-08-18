@@ -121,10 +121,11 @@
 		if(_failed) {
 			alert('error: ' + _failed);
 		} else {
+			$('.headerChoices').empty();
 			for(var i = 0; i < _data.headers.length; i++) {
 				var html = '<div class="headerChoice"><span>' + _data.headers[i] + ':</span> ';
 				html += '<div class="buttonChoices"><button class="currentChoice">Text</button><button>Number</button></div></div>';
-				$('.headerChoices').empty().append(html);
+				$('.headerChoices').append(html);
 			}
 			$('.after').removeClass('hide');
 			var scrollTo = $('.after').offset().top - 10;
