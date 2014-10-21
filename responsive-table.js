@@ -149,7 +149,8 @@
 
 		//headers
 		for (var i = 0; i < _data.headers.length; i++) {
-			var valTh = _data.headers[i].toLowerCase();
+			// var valTh = _data.headers[i].toLowerCase();
+			var valTh = _data.headers[i];
 			var classesTh = input.hideColumns[valTh] ? 'hideMobile ' : '';
 			classesTh += _data.className[i] + ' responsive-th';
 
@@ -175,7 +176,8 @@
 
 			//cols
 			for (var b = 0; b < row.length; b++) {
-				var valCol = _data.headers[b].toLowerCase();
+				// var valCol = _data.headers[b].toLowerCase();
+				var valCol = _data.headers[b];
 				var classesTd = input.hideColumns[valCol] ? 'hideMobile ' : '';
 				classesTd += _data.className[b];
 
@@ -227,7 +229,8 @@
 			var names = input.hideColumns.split(',');
 			input.hideColumns = {};
 			for(var i = 0; i < names.length; i++) {
-				input.hideColumns[names[i].trim().toLowerCase()] = true;
+				// input.hideColumns[names[i].trim().toLowerCase()] = true;
+				input.hideColumns[names[i].trim()] = true;
 			}
 		} else {
 			input.hideColumns = {};
