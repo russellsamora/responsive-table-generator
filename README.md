@@ -11,4 +11,3 @@ Probably everything.
 
 ### TODO
 * styling options
-* sort option if you really desire javascript (but as little as possible)
