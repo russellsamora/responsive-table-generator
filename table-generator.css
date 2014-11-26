@@ -1,0 +1,49 @@
+.headerChoices {
+	margin-bottom: 0.5em;
+}
+.headerChoice {
+	border-bottom: 1px solid #ccc;
+}
+.headerChoice span {
+	display: inline-block;
+	min-width: 80px;
+	font-weight: bold;
+	font-size: 0.9em;
+}
+.buttonChoices {
+	display: inline-block;
+}
+.buttonChoices button {
+	display: inline;
+	cursor: pointer;
+	background: #ccc;
+	color: #fff;
+	width: auto;
+	text-transform: uppercase;
+	margin: 0.5em auto;
+	padding: 0.5em;
+	border: none;
+}
+.buttonChoices button.currentChoice {
+	background: #d44;
+	color: #fff;
+}
+
+.breakpointContainer {
+	height: 100%;
+	overflow: hidden;
+}
+#breakpointSlider {
+	display: inline;
+	float: left;
+	margin: 0;
+	width: 80%;
+}
+#breakpointText {
+	margin: 0;
+	display: inline;
+	float: left;
+	margin-left: 5%;
+	width: 15%;
+	text-align: center;
+}
