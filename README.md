@@ -11,3 +11,4 @@ Probably everything.
 
 ### TODO
 * styling options
+* live preview with header footer contenteditable
