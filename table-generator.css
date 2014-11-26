@@ -7,7 +7,7 @@
 .headerChoice span {
 	display: inline-block;
 	min-width: 80px;
-	font-weight: bold;
+	color: #000;
 	font-size: 0.9em;
 }
 .buttonChoices {
@@ -25,8 +25,9 @@
 	border: none;
 }
 .buttonChoices button.currentChoice {
-	background: #d44;
+	background: #000;
 	color: #fff;
+	letter-spacing: 0.05em;
 }
 
 .breakpointContainer {
@@ -46,4 +47,7 @@
 	margin-left: 5%;
 	width: 15%;
 	text-align: center;
+}
+.result {
+	font-weight: normal;
 }
