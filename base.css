@@ -40,6 +40,7 @@ button {
 	margin: 0.5em auto;
 	padding: 0.5em 1em;
 	border: none;
+	outline: none;
 }
 .container {
 	max-width: 1080px;
@@ -91,4 +92,14 @@ input {
 .russell {
 	 margin-top: 2em;
 	 text-align: center;
+}
+div[contenteditable=true] {
+	border-bottom: 1px dashed #aaa;
+	outline: none;
+}
+
+.barchart-source span {
+	display: inline-block;
+	border-bottom: 1px dashed #aaa;
+	outline: none;
 }
