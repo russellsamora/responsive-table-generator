@@ -49,11 +49,6 @@
 			customize(input);
 		});
 
-		$('.audioChoice').on('click', function() {
-			var t = $(this).attr('data-track');
-			createAudio(+t);
-		});
-
 		$('.modify').on('click', function() {
 			var scrollTo = $('.after').offset().top - 10;
 			$('html, body').animate({
@@ -246,40 +241,6 @@
 			var el = $(this).find('.currentChoice');
 			var t = el.text().toLowerCase().trim();
 			_data.className[i] = t;
-		});
-	}
-
-	function createAudio(track) {
-		$('.enhance').addClass('hide');
-		$('.toggleAudio').removeClass('hide');
-		var sound = new Howl({
-			urls: ['audio/track' + track + '.mp3', 'audio/track' + track + '.ogg'],
-			loop: true,
-			volume: 0.5,
-			onload: function() {
-				sound.isPlaying = false;
-				$('.toggleAudio').text('Play');
-				$('.toggleAudio').on('click', function(e) {
-					e.preventDefault();
-
-					if(sound.isPlaying) {
-						//pause
-						sound.isPlaying = false;
-						sound.pause();
-						$(this).text('Play');
-					} else {
-						//play
-						sound.isPlaying = true;
-						sound.play();
-						$(this).text('Pause');
-					}
-					return false;
-				});
-			},
-			onloaderror: function() {
-				$('.toggleAudio').remove();
-				$('.enhance').remove();
-			}
 		});
 	}
 
