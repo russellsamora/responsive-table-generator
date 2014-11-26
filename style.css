@@ -121,6 +121,7 @@ input {
 }
 .intro {
 	font-size: 0.9em;
+	margin-bottom: 1em;
 }
 .credits {
 	border-top: 1px solid #ccc;
