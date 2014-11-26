@@ -10,7 +10,6 @@
 		bindEvents();
 	}
 
-	//setup all event listeners
 	function bindEvents() {
 		$('.generate').on('click', function(e) {
 			e.preventDefault();	
@@ -61,7 +60,6 @@
 		});
 	}
 
-	//grab the text from the input textarea and start parsing
  	function parseInput(input) {
 		var lines = input.split('\n');
 		if(lines.length > 1) {
@@ -73,14 +71,11 @@
 		} else {
 			_failed = 'no rows';
 		}
-		
 		displayHeaderTypes();
 	}
 
-	//set the header names from the first row
 	function setHeaders(line) {
 		var headers = line.split('\t');
-		//empty
 		if(headers.length === 1 && !headers[0]) {
 			_failed = 'no headers';
 		} else {
@@ -91,7 +86,6 @@
 		}
 	}
 
-	//set the row and column data
 	function setRows(lines) {
 		for(var i = 0; i < lines.length; i++) {
 			var l = lines[i];
@@ -103,7 +97,6 @@
 		}
 	}
 
-	//set if the column is number or text from first row of data
 	function setNumericColumns(line) {
 		var cols = line.split('\t');
 		for(var i = 0; i < cols.length; i++) {
@@ -111,7 +104,6 @@
 		}
 	}
 
-	//prompt user to choose types (text or number)
 	function displayHeaderTypes() {
 		if(_failed) {
 			alert('error: ' + _failed);
@@ -142,9 +134,7 @@
 		_output = '<style>\n' + _css + '\n</style>\n';
 		_output += '<table class="' + classesTable + '">\n\t<thead>';
 
-		//headers
 		for (var i = 0; i < _data.headers.length; i++) {
-			// var valTh = _data.headers[i].toLowerCase();
 			var valTh = _data.headers[i];
 			var classesTh = input.hideColumns[valTh] ? 'hideMobile ' : '';
 			classesTh += _data.className[i] + ' responsive-th';
@@ -158,7 +148,6 @@
 
 		_output += '\n\t</thead>\n\t<tbody>';
 
-		//rows
 		for (var a = 0; a < _data.rows.length; a++) {
 			var row = _data.rows[a];
 			var hideMobile = '';
@@ -169,9 +158,7 @@
 
 			_output += '\n\t\t<tr' + hideMobile + '>';
 
-			//cols
 			for (var b = 0; b < row.length; b++) {
-				// var valCol = _data.headers[b].toLowerCase();
 				var valCol = _data.headers[b];
 				var classesTd = input.hideColumns[valCol] ? 'hideMobile ' : '';
 				classesTd += _data.className[b];
@@ -190,7 +177,6 @@
 		_output += '\n\t</tbody>\n</table>';
 		$('.output').val(_output);
 
-		//output preview
 		$table.append($thead);
 		$table.append($tbody);
 		$('.result').empty().append('<style>' + _css + '<style>').append($table);
@@ -202,7 +188,6 @@
 			scrollTop: scrollTo
 		}, 250);
 
-		//add zebra striping
 		if(input.zebra) {
 			$('.responsive-table').addClass('zebra');	
 		}
@@ -224,7 +209,6 @@
 			var names = input.hideColumns.split(',');
 			input.hideColumns = {};
 			for(var i = 0; i < names.length; i++) {
-				// input.hideColumns[names[i].trim().toLowerCase()] = true;
 				input.hideColumns[names[i].trim()] = true;
 			}
 		} else {
