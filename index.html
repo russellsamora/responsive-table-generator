@@ -40,7 +40,7 @@
                     </p>
                     <input class='hideColumns' placeholder='City,Price'>
                     <p class='instructions'>
-                        At what breakpoint (in pixels) to switch to mobile version?
+                        At what breakpoint to switch to mobile version? (resize to see)
                     </p>
                     <div class='breakpointContainer'>
                         <input id='breakpointSlider' type='range' min='240' max='1200' step='1' value='500'>
@@ -51,15 +51,18 @@
                     <button class='createTable'>Create table</button>
                     <div class='final hide'>
                         <h3>Preview</h3>
-                        <p class='updated invisible'>Updated</p>
+                        <p>
+                            Replace underlined text with your copy below, then click 'generate code'. If you don't want a hed or a subhed, delete the contents. The generated code will remove the whitespace. Click a row to toggle on/off highlighting.
+                        </p>
+                        <p class='updated invisible'>updated options</p>
+                        <div class='preview'></div>
+                        <button class='generate-code'>Generate code</button>
                     </div>
                 </div>
             </section>
-            <div class='result final hide'></div>
             <section>
                 <div class='final hide'>
-                    <h3>Output</h3>
-                    <textarea class='output'></textarea>
+                    <textarea class='output-code'></textarea>
                     <button class='modify'>Modify settings</button>
                 </div>
                 <div class='credits'>

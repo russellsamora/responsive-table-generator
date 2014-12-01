@@ -48,6 +48,7 @@
 	width: 15%;
 	text-align: center;
 }
-.result {
-	font-weight: normal;
+
+.responsive-table tr {
+	cursor: pointer;
 }
