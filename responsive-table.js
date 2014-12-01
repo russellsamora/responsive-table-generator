@@ -8,7 +8,7 @@
 		var _copy = {
 			hed: 'Hed',
 			subhed: 'Subhed goes here.',
-			credit: 'First Last / Globe Staff',
+			credit: 'Globe Staff',
 			sourcePre: 'DATA',
 			sourcePost: 'Sources'
 		};
