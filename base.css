@@ -115,3 +115,11 @@ div[contenteditable=true] {
 	border-bottom: 1px dashed #aaa;
 	outline: none;
 }
+
+.preview {
+	font-weight: normal;
+}
+
+.output-code {
+	margin: 1em 0;
+}
