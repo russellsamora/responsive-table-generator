@@ -87,9 +87,8 @@ input {
 .updated {
 	text-transform: uppercase;
 	font-size: 0.9em;
-	font-weight: bold;
 	text-align: center;
-	color: #999;
+	color: #0a0;
 }
 .intro {
 	font-size: 0.9em;
@@ -111,7 +110,7 @@ div[contenteditable=true] {
 	outline: none;
 }
 
-.barchart-source span {
+.responsive-graphic-source span {
 	display: inline-block;
 	border-bottom: 1px dashed #aaa;
 	outline: none;
