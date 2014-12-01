@@ -118,6 +118,9 @@ div[contenteditable=true] {
 
 .preview {
 	font-weight: normal;
+	-webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 }
 
 .output-code {
