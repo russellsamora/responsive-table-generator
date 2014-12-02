@@ -112,7 +112,6 @@ div[contenteditable=true] {
 
 .responsive-graphic-source span {
 	display: inline-block;
-	border-bottom: 1px dashed #aaa;
 	outline: none;
 }
 
