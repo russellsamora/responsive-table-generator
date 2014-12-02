@@ -1,52 +1,54 @@
 /*styles for graphic info (hed, subhed, source, credit)*/
 .responsive-graphic-container {
-	font-family: Helvetica, Arial, sans-serif;
-	font-size: 16px;
-	margin: 0;
-	padding: 1em 0;
-	color: #1a1a1a;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    margin: 1em 0;
+    color: #1a1a1a;
 }
 .responsive-graphic-header {
-	margin-bottom: 0.5em;
+    margin-bottom: 1em;
 }
 .responsive-graphic-hed {
-	font-size: 1.4em;
-	font-weight: bold;
-	margin-bottom: 0.2em;
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-bottom: 0.25em;
 }
 .responsive-graphic-subhed {
-	font-size: 1em;
+    font-size: 1em;
+    line-height: 1.4em;
 }
 .responsive-graphic-source-and-credit {
-	font-family: Georgia,"Times New Roman",Times,serif;
-	width: 100%;
-	overflow: hidden;
-	margin-top: 1em;
+    font-family: Georgia,"Times New Roman",Times,serif;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 1em;
 }
 .responsive-graphic-source {
-	margin: 0;
-	float: left;
-	font-weight: bold;
-	font-size: 0.75em;
+    margin: 0;
+    float: left;
+    font-weight: bold;
+    font-size: 0.75em;
+    line-height: 1.5em;
 }
 .responsive-graphic-source .pre-colon {
-	text-transform: uppercase;
+    text-transform: uppercase;
 }
 .responsive-graphic-credit {
-	margin: 0;
-	color: #999;
-	text-transform: uppercase;
-	letter-spacing: 0.05em;
-	float: right;
-	text-align: right;
-	font-size: 0.65em;
+    margin: 0;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    float: right;
+    text-align: right;
+    font-size: 0.65em;
+    line-height: 1.5em;
 }
 @media (max-width: 640px) {
 .responsive-graphic-source-and-credit > div {
-	width: 100%;
-	display: block;
-	float: none;
-	text-align: right;
+    width: 100%;
+    display: block;
+    float: none;
+    text-align: right;
 }
 }
 /*styles for graphic*/
