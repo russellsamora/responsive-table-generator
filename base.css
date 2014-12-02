@@ -122,6 +122,13 @@ div[contenteditable=true] {
     user-select: none;
 }
 
+.preview input,
+.preview textarea,
+[contenteditable] {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
 .output-code {
 	margin: 1em 0;
 }
