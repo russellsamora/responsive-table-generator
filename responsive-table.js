@@ -149,13 +149,13 @@
 		
 		var $inlineStyle = '<style>@media screen and (max-width:' + _input.breakpoint + '){table.responsive-graphic-content {display: block;width: 100%;}table.responsive-table-content .number {text-align: left;}table.responsive-table-content tr.hideMobile, table.responsive-table-content th.hideMobile, table.responsive-table-content td.hideMobile {display: none;}table.responsive-table-content thead {display: none;}table.responsive-table-content tbody {display: block;width: 100%;}table.responsive-table-content tr, table.responsive-table-content th, table.responsive-table-content td {display: block;padding: 0;}table.responsive-table-content th[data-title]:before, table.responsive-table-content td[data-title]:before {content: attr(data-title) ":\\00A0";font-weight: bold;}table.responsive-table-content tr {border-bottom: 1px solid #ccc;margin: 0;padding: 0.5em 0;}table.responsive-table-content tr:nth-child(even) {background: none;}table.responsive-table-content td {padding: 0.25em 0 0 0;}table.responsive-table-content td:empty {display: none;}table.responsive-table-content td:first-child {font-size: 1.1em;font-weight: bold;}table.responsive-table-content td:first-child:before {content: "";}}</style>';
 		
-		if(_input.zebra) {
-			$table.addClass('zebra')
-		}
-
 		var tableContent = '';
 
-		tableContent += '<table class="responsive-table"><thead>';
+		var tableClasses = 'responsive-table';
+		if(_input.zebra) {
+			tableClasses += ' zebra';	
+		}
+		tableContent += '<table class="' + tableClasses + '"><thead>';
 
 		for (var i = 0; i < _data.headers.length; i++) {
 			var valTh = _data.headers[i];
