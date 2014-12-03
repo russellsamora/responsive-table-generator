@@ -270,11 +270,16 @@
 
 		for (var a = 0; a < _data.rows.length; a++) {
 			var row = _data.rows[a];
-			var hideMobile = '';
-			if(_input.mobileRows) {
-				hideMobile = a < _input.mobileRows ? '' : ' class="hide-mobile"';
+			var trClasses = '';
+			trClasses += a < _input.mobileRows ? '' : 'hide-mobile';
+			if(highlight[a]) {
+				trClasses += ' highlight';
 			}
-			html += '\n\t\t\t\t<tr' + hideMobile + '>';
+			if(trClasses) {
+				html += '\n\t\t\t\t<tr class="' + trClasses + '">';	
+			} else {
+				html += '\n\t\t\t\t<tr>';
+			}
 
 			for (var b = 0; b < row.length; b++) {
 				var valCol = _data.headers[b];
@@ -311,12 +316,6 @@
 	}
 
 	function customize(input) {
-		if(input.mobileRows) {
-			input.mobileRows = +input.mobileRows;
-			if(isNaN(input.mobileRows)) {
-				input.mobileRows = false;
-			}
-		}
 		if(input.hideColumns) {
 			var names = input.hideColumns.split(',');
 			input.hideColumns = {};
