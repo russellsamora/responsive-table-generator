@@ -79,24 +79,12 @@ table.rg-table thead {
 }
 table.rg-table th {
 	font-weight: bold;
-	padding: 0.5em 0;
+	padding: 0.5em;
 	font-size: 0.85em;
 }
-table.rg-table th:first-child {
-	padding-left:0.5em;
-}
-table.rg-table th:last-child {
-	padding-right:0.5em;
-}
 table.rg-table td {
-	padding: 0.5em 0;
+	padding: 0.5em;
 	font-size: 0.9em;
-}
-table.rg-table td:first-child {
-	padding-left:0.5em;
-}
-table.rg-table td:last-child {
-	padding-right:0.5em;
 }
 table.rg-table .highlight td {
 	font-weight: bold;
