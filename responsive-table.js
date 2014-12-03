@@ -228,7 +228,6 @@
 			if($(this).hasClass('highlight')) {
 				var index = $(this).index();
 				highlight[index] = true;
-				console.log(index);
 			}
 		});
 
