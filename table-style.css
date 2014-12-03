@@ -1,54 +1,55 @@
 /*styles for graphic info (hed, subhed, source, credit)*/
 .responsive-graphic-container {
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    margin: 1em 0;
-    color: #1a1a1a;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	margin: 0;
+	padding: 1em 0;
+	color: #1a1a1a;
 }
 .responsive-graphic-header {
-    margin-bottom: 1em;
+	margin-bottom: 1em;
 }
 .responsive-graphic-hed {
-    font-size: 1.6em;
-    font-weight: bold;
-    margin-bottom: 0.25em;
+	font-size: 1.6em;
+	font-weight: bold;
+	margin-bottom: 0.25em;
 }
 .responsive-graphic-subhed {
-    font-size: 1em;
-    line-height: 1.4em;
+	font-size: 1em;
+	line-height: 1.4em;
 }
 .responsive-graphic-source-and-credit {
-    font-family: Georgia,"Times New Roman",Times,serif;
-    width: 100%;
-    overflow: hidden;
-    margin-top: 1em;
+	font-family: Georgia,"Times New Roman",Times,serif;
+	width: 100%;
+	overflow: hidden;
+	margin-top: 1em;
 }
 .responsive-graphic-source {
-    margin: 0;
-    float: left;
-    font-weight: bold;
-    font-size: 0.75em;
-    line-height: 1.5em;
+	margin: 0;
+	float: left;
+	font-weight: bold;
+	font-size: 0.75em;
+	line-height: 1.5em;
 }
 .responsive-graphic-source .pre-colon {
-    text-transform: uppercase;
+	text-transform: uppercase;
 }
 .responsive-graphic-credit {
-    margin: 0;
-    color: #999;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    float: right;
-    text-align: right;
-    font-size: 0.65em;
-    line-height: 1.5em;
+	margin: 0;
+	color: #999;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	float: right;
+	text-align: right;
+	font-size: 0.65em;
+	line-height: 1.5em;
 }
 @media (max-width: 640px) {
 .responsive-graphic-source-and-credit > div {
-    width: 100%;
-    display: block;
-    float: none;
-    text-align: right;
+	width: 100%;
+	display: block;
+	float: none;
+	text-align: right;
 }
 }
 /*styles for graphic*/
@@ -73,30 +74,52 @@ table.responsive-table * {
   color: #333;
 }
 table.responsive-table thead {
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid rgba(195,195,197,.3);
 }
 table.responsive-table th {
 	font-weight: bold;
-	padding: 0.25em 0;
+	padding: 0.5em 0;
+	font-size: 0.85em;
 }
+
+table.responsive-table th:first-child {
+	padding-left:0.5em;
+}
+
+table.responsive-table th:last-child {
+	padding-right:0.5em;
+}
+
 table.responsive-table td {
-	padding: 0.25em 0;
+	padding: 0.5em 0;
 	font-size: 0.9em;
 }
+
+table.responsive-table td:first-child {
+	padding-left:0.5em;
+}
+
+table.responsive-table td:last-child {
+	padding-right:0.5em;
+}
+
 table.responsive-table .highlight td {
 	font-weight: bold;
 }
 table.responsive-table tr {
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid rgba(195,195,197,.3);
+	color: #222;
 }
-table.responsive-table tr.highlight {
-	background: #efefef;
-}
+
 table.responsive-table .number {
 	text-align: right;
 }
 table.responsive-table.zebra tr:nth-child(even) {
-	background: #efefef;
+	background: rgba(195, 195, 197, 0.1);
+}
+
+table.responsive-table tr.highlight {
+	background: #edece4 !important;
 }
 @media screen and (max-width: 500px) {
 table.responsive-table {
@@ -116,6 +139,15 @@ table.responsive-table tbody {
 	display: block;
 	width: 100%;
 }
+
+table.responsive-table td:first-child {
+	padding-left:0;
+}
+
+table.responsive-table td:last-child {
+	padding-right:0;
+}
+
 table.responsive-table tr, table.responsive-table th, table.responsive-table td {
 	display: block;
 	padding: 0;
@@ -125,7 +157,7 @@ table.responsive-table th[data-title]:before, table.responsive-table td[data-tit
 	font-weight: bold;
 }
 table.responsive-table tr {
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid rgba(195,195,197,.3);
 	margin: 0;
 	padding: 0.5em 0;
 }
