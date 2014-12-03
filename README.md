@@ -1,4 +1,4 @@
-Ms. Responsive Table Generator
+Responsive Table Generator
 ==============================
 
 [Try it now](http://russellgoldenberg.github.io/responsive-table-generator)
