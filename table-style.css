@@ -1,40 +1,41 @@
 /*styles for graphic info (hed, subhed, source, credit)*/
-.responsive-graphic-container {
+.rg-container {
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 16px;
+	line-height: 1;
 	margin: 0;
 	padding: 1em 0;
 	color: #1a1a1a;
 }
-.responsive-graphic-header {
+.rg-header {
 	margin-bottom: 1em;
 }
-.responsive-graphic-hed {
+.rg-hed {
 	font-size: 1.6em;
 	font-weight: bold;
 	margin-bottom: 0.25em;
 }
-.responsive-graphic-subhed {
+.rg-subhed {
 	font-size: 1em;
 	line-height: 1.4em;
 }
-.responsive-graphic-source-and-credit {
+.rg-source-and-credit {
 	font-family: Georgia,"Times New Roman",Times,serif;
 	width: 100%;
 	overflow: hidden;
 	margin-top: 1em;
 }
-.responsive-graphic-source {
+.rg-source {
 	margin: 0;
 	float: left;
 	font-weight: bold;
 	font-size: 0.75em;
 	line-height: 1.5em;
 }
-.responsive-graphic-source .pre-colon {
+.rg-source .pre-colon {
 	text-transform: uppercase;
 }
-.responsive-graphic-credit {
+.rg-credit {
 	margin: 0;
 	color: #999;
 	text-transform: uppercase;
@@ -45,7 +46,7 @@
 	line-height: 1.5em;
 }
 @media (max-width: 640px) {
-.responsive-graphic-source-and-credit > div {
+.rg-source-and-credit > div {
 	width: 100%;
 	display: block;
 	float: none;
@@ -53,128 +54,117 @@
 }
 }
 /*styles for graphic*/
-table.responsive-table {
-  margin: 0 0 1em 0;
-  width: 100%;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 1em;
-  border-collapse: collapse;
-  border-spacing: 0;
+table.rg-table {
+	margin: 0 0 1em 0;
+	width: 100%;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 1em;
+	border-collapse: collapse;
+	border-spacing: 0;
 }
-table.responsive-table * {
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-  text-align: left;
-  color: #333;
+table.rg-table * {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	text-align: left;
+	color: #333;
 }
-table.responsive-table thead {
+table.rg-table thead {
 	border-bottom: 1px solid rgba(195,195,197,.3);
 }
-table.responsive-table th {
+table.rg-table th {
 	font-weight: bold;
 	padding: 0.5em 0;
 	font-size: 0.85em;
 }
-
-table.responsive-table th:first-child {
+table.rg-table th:first-child {
 	padding-left:0.5em;
 }
-
-table.responsive-table th:last-child {
+table.rg-table th:last-child {
 	padding-right:0.5em;
 }
-
-table.responsive-table td {
+table.rg-table td {
 	padding: 0.5em 0;
 	font-size: 0.9em;
 }
-
-table.responsive-table td:first-child {
+table.rg-table td:first-child {
 	padding-left:0.5em;
 }
-
-table.responsive-table td:last-child {
+table.rg-table td:last-child {
 	padding-right:0.5em;
 }
-
-table.responsive-table .highlight td {
+table.rg-table .highlight td {
 	font-weight: bold;
 }
-table.responsive-table tr {
+table.rg-table tr {
 	border-bottom: 1px solid rgba(195,195,197,.3);
 	color: #222;
 }
-
-table.responsive-table .number {
+table.rg-table .number {
 	text-align: right;
 }
-table.responsive-table.zebra tr:nth-child(even) {
+table.rg-table.zebra tr:nth-child(even) {
 	background: rgba(195, 195, 197, 0.1);
 }
-
-table.responsive-table tr.highlight {
+table.rg-table tr.highlight {
 	background: #edece4 !important;
 }
 @media screen and (max-width: 500px) {
-table.responsive-table {
+table.rg-table {
 	display: block;
 	width: 100%;
 }
-table.responsive-table .number {
+table.rg-table .number {
 	text-align: left;
 }
-table.responsive-table tr.hideMobile, table.responsive-table th.hideMobile, table.responsive-table td.hideMobile {
+table.rg-table tr.hide-mobile, table.rg-table th.hide-mobile, table.rg-table td.hide-mobile {
 	display: none;
 }
-table.responsive-table thead {
+table.rg-table thead {
 	display: none;
 }
-table.responsive-table tbody {
+table.rg-table tbody {
 	display: block;
 	width: 100%;
 }
-
-table.responsive-table td:first-child {
+table.rg-table td:first-child {
 	padding-left:0;
 }
-
-table.responsive-table td:last-child {
+table.rg-table td:last-child {
 	padding-right:0;
 }
-
-table.responsive-table tr, table.responsive-table th, table.responsive-table td {
+table.rg-table tr, table.rg-table th, table.rg-table td {
 	display: block;
 	padding: 0;
 }
-table.responsive-table th[data-title]:before, table.responsive-table td[data-title]:before {
+table.rg-table th[data-title]:before, table.rg-table td[data-title]:before {
 	content: attr(data-title) ":\00A0";
 	font-weight: bold;
 }
-table.responsive-table tr {
+table.rg-table tr {
 	border-bottom: 1px solid rgba(195,195,197,.3);
 	margin: 0;
 	padding: 0.5em 0;
 }
-table.responsive-table tr:nth-child(even) {
+table.rg-table tr:nth-child(even) {
 	background: none;
 }
-table.responsive-table td {
+table.rg-table td {
 	padding: 0.25em 0 0 0;
 }
-table.responsive-table td:empty {
+table.rg-table td:empty {
 	display: none;
 }
-table.responsive-table td:first-child {
+table.rg-table td:first-child {
 	font-size: 1.1em;
 	font-weight: bold;
 }
-table.responsive-table td:first-child:before {
+table.rg-table td:first-child:before {
 	content: "";
 }
 }

@@ -1,19 +1,19 @@
-.headerChoices {
+.header-choices {
 	margin-bottom: 0.5em;
 }
-.headerChoice {
+.header-choice {
 	border-bottom: 1px solid #ccc;
 }
-.headerChoice span {
+.header-choice span {
 	display: inline-block;
 	min-width: 80px;
 	color: #000;
 	font-size: 0.9em;
 }
-.buttonChoices {
+.button-choices {
 	display: inline-block;
 }
-.buttonChoices button {
+.button-choices button {
 	display: inline;
 	cursor: pointer;
 	background: #ccc;
@@ -24,23 +24,23 @@
 	padding: 0.5em;
 	border: none;
 }
-.buttonChoices button.currentChoice {
+.button-choices button.current-choice {
 	background: #000;
 	color: #fff;
 	letter-spacing: 0.05em;
 }
 
-.breakpointContainer {
+.breakpoint-container {
 	height: 100%;
 	overflow: hidden;
 }
-#breakpointSlider {
+#breakpoint-slider {
 	display: inline;
 	float: left;
 	margin: 0;
 	width: 80%;
 }
-#breakpointText {
+#breakpoint-text {
 	margin: 0;
 	display: inline;
 	float: left;
@@ -49,6 +49,6 @@
 	text-align: center;
 }
 
-.responsive-table tr {
+.rg-table tr {
 	cursor: pointer;
 }

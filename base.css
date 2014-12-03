@@ -102,8 +102,12 @@ input {
 	text-align: center;
 }
 .russell {
-	 margin-top: 2em;
-	 text-align: center;
+	margin-top: 2em;
+	text-align: center;
+}
+.russell a {
+	text-decoration: none;
+	outline: none;
 }
 div[contenteditable=true] {
 	border-bottom: 1px dashed #aaa;

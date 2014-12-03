@@ -27,32 +27,32 @@
             </section>
             <section>
                 <div class='after hide'>
-                    <div class='promptHeaders'>
+                    <div class='prompt-headers'>
                         <h3>Select Column Types</h3>
                         <p class='instructions'>Choose the type of value for each column.</p>
-                        <div class='headerChoices'></div>
+                        <div class='header-choices'></div>
                     </div>
                     <h3>Options</h3>
                     <p class='instructions'>Max # of rows to show on mobile? (suggeted: 5-10)</p>
-                    <input class='mobileRows' placeholder='5'>
+                    <input class='mobile-rows' placeholder='5'>
                     <p class='instructions'>
                         Columns to hide on mobile? (comma-delimited, column header names as they appear above)
                     </p>
-                    <input class='hideColumns' placeholder='City,Price'>
+                    <input class='hide-columns' placeholder='City,Price'>
                     <p class='instructions'>
                         At what breakpoint to switch to mobile version? (resize to see)
                     </p>
-                    <div class='breakpointContainer'>
-                        <input id='breakpointSlider' type='range' min='240' max='1200' step='1' value='500'>
-                        <input id='breakpointText' value='500px'>
+                    <div class='breakpoint-container'>
+                        <input id='breakpoint-slider' type='range' min='240' max='1200' step='1' value='500'>
+                        <input id='breakpoint-text' value='500px'>
                     </div>
                     <p class='instructions'>Zebra striping?</p>
                     <input type='checkbox' class='zebra'>
-                    <button class='createTable'>Create table</button>
+                    <button class='create-table'>Create table</button>
                     <div class='final hide'>
                         <h3>Preview</h3>
                         <p>
-                            Replace underlined text with your copy below, then click 'generate code'. If you don't want a hed or a subhed, delete the contents. The generated code will remove the whitespace. Click a row to toggle on/off highlighting.
+                            Replace underlined text with your copy below, then click 'generate code'. If you don't want a hed or a subhed, delete the contents. The generated code will remove the whitespace. Click a row to toggle on/off highlighting. <em>Table truncates at 10 on mobile. If you need more, talk to graphics team.</em>
                         </p>
                         <p class='updated invisible'>updated options</p>
                         <div class='preview'></div>
