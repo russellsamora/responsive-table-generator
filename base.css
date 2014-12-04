@@ -121,6 +121,9 @@ div[contenteditable=true] {
 
 .preview {
 	font-weight: normal;
+}
+
+.rg-content {
 	-webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
