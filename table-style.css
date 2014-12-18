@@ -11,8 +11,9 @@
 	margin-bottom: 1em;
 }
 .rg-hed {
-	font-size: 1.4em;
+	font-family: "Benton Sans Bold", Helvetica, Arial, sans-serif;
 	font-weight: bold;
+	font-size: 1.35em;
 	margin-bottom: 0.25em;
 }
 .rg-subhed {
@@ -20,7 +21,7 @@
 	line-height: 1.4em;
 }
 .rg-source-and-credit {
-	font-family: Georgia,"Times New Roman",Times,serif;
+	font-family: Georgia,"Times New Roman", Times,serif;
 	width: 100%;
 	overflow: hidden;
 	margin-top: 1em;
