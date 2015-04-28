@@ -4,7 +4,6 @@
 		var _data;
 		var _input;
 		var _demo = 'Name\tCity\tRating\tPrice\nSuperette\tHolliston\t4.5\t$8.00\nTasty Treat\tAshland\t2.0\t$5.00\nBig Fresh\tFramingham\t5.0\t$9.00\nSeta\'s Cafe\tWatertown\t3.8\t$7.50';
-		var _maxMobileRows = 10;
 		var _copy = {
 			hed: 'Hed',
 			subhed: 'Subhed goes here.',
@@ -46,7 +45,7 @@
 		$('.create-table').on('click', function() {
 			getColumnTypes();
 			var input = {
-				mobileRows: $('.mobile-rows').val() || _maxMobileRows,
+				mobileRows: $('.mobile-rows').val() || 9999,
 				zebra: $('.zebra:checked').val() ? true : false,
 				hideColumns: $('.hide-columns').val(),
 				breakpoint: $('#breakpoint-text').val()

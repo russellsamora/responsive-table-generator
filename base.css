@@ -140,3 +140,7 @@ div[contenteditable=true] {
 .output-code {
 	margin: 1em 0;
 }
+
+p.instructions {
+	margin-top: 1em;
+}
