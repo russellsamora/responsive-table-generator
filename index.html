@@ -7,8 +7,9 @@
         <meta name='description' content='A CSS and HTML responsive table generator by Russell Goldenberg.'>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <link rel='stylesheet' href='http://russellgoldenberg.github.io/responsive-table-generator/base.css'>
+        <!-- smoosh -->
         <link rel='stylesheet' href='table-generator.css'>
-        <link rel='stylesheet' href='table-style.css'>
+        <!-- endsmoosh -->
         <link rel='shortcut icon' type='image/png' href='favicon.png'>
     </head>
     <body>
@@ -40,7 +41,7 @@
                     </p>
                     <input class='hide-columns' placeholder='City,Price'>
                     <p class='instructions'>
-                        When to switch to mobile layout? (resize browser / change this value and 'update table')
+                        When to switch to mobile layout? (resize browser and 'update table' to see effect)
                     </p>
                     <div class='breakpoint-container'>
                         <input id='breakpoint-slider' type='range' min='240' max='1200' step='1' value='500'>
@@ -79,7 +80,9 @@
         </div>
     </body>
     <script src='jquery.min.js'></script>
+    <!-- smoosh -->
     <script src='responsive-table.js'></script>
+    <!-- endsmoosh -->
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

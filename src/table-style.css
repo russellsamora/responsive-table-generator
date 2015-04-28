@@ -103,7 +103,7 @@ table.rg-table.zebra tr:nth-child(even) {
 table.rg-table tr.highlight {
 	background: #edece4;
 }
-@media screen and (max-width: ' + _input.breakpoint + ') {
+@media screen and (max-width: @@max) {
 .rg-container {
 	max-width: 500px;
 	margin: 0 auto;
