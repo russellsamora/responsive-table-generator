@@ -82,10 +82,12 @@ table.rg-table th {
 	font-weight: bold;
 	padding: 0.5em;
 	font-size: 0.85em;
+	line-height: 1.4;
 }
 table.rg-table td {
 	padding: 0.5em;
 	font-size: 0.9em;
+	line-height: 1.4;
 }
 table.rg-table .highlight td {
 	font-weight: bold;
@@ -130,12 +132,14 @@ table.rg-table tr, table.rg-table th, table.rg-table td {
 	display: block;
 	padding: 0;
 }
-table.rg-table th[data-title]:before, table.rg-table td[data-title]:before {
+table.rg-table td[data-title]:before {
 	content: attr(data-title) ":\00A0";
 	font-weight: bold;
 	display: inline-block;
 	content: attr(data-title);
 	float: left;
+	margin-right: 0.5em;
+	font-size: 0.95em;
 }
 table.rg-table tr {
 	border-bottom: none;
