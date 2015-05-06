@@ -77,6 +77,7 @@ input {
 	line-height: 1.4;
 	width: 100%;
 	outline: none;
+	margin-bottom: 0.5em;
 }
 .hide {
 	display: none;
@@ -101,6 +102,7 @@ input {
 	margin-bottom: 4em;
 	font-size: 0.9em;
 	text-align: center;
+	padding-top: 1em;
 }
 .russell {
 	margin-top: 2em;
