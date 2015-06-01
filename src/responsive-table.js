@@ -7,7 +7,6 @@
 		var _copy = {
 			hed: 'Hed',
 			subhed: 'Subhed goes here.',
-			credit: 'Globe Staff',
 			sourcePre: 'SOURCE',
 			sourcePost: 'Sources'
 		};
@@ -144,7 +143,6 @@
 		var $content = $('<div class="rg-content"></div>');
 		var $sourceCredit = $('<div class="rg-source-and-credit"></div>');
 		var $source = $('<div contenteditable="true" class="rg-source"><span class="pre-colon">' + _copy.sourcePre + '</span>: <span class="post-colon">' + _copy.sourcePost + '</span></div>');
-		var $credit = $('<div contenteditable="true" class="rg-credit">' + _copy.credit + '</div>');
 		
 		var $inlineStyle = '<style>@@include("../.tmp/table-style.css")</style>';
 		
@@ -193,7 +191,6 @@
 		$content.append(tableContent);
 
 		$sourceCredit.append($source);
-		$sourceCredit.append($credit);
 		$header.append($hed);
 		$header.append($subhed);
 		
@@ -298,7 +295,6 @@
 
 		html += '\n\t<div class="rg-source-and-credit">';
 		html += '\n\t\t<div class="rg-source"><span class="pre-colon">' + _copy.sourcePre + '</span>: <span class="post-colon">' + _copy.sourcePost + '</span></div>';
-		html += '\n\t\t<div class="rg-credit">' + _copy.credit + '</div>';
 		html += '\n\t</div>';
 
 		html += '\n</div>';
@@ -309,7 +305,6 @@
 	function updateCopy() {
 		_copy.hed = $('.rg-hed').text();
 		_copy.subhed = $('.rg-subhed').text();
-		_copy.credit = $('.rg-credit').text();
 		_copy.sourcePre = $('.rg-source .pre-colon').text();
 		_copy.sourcePost = $('.rg-source .post-colon').text();
 	}

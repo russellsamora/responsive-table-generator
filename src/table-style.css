@@ -36,24 +36,6 @@
 .rg-source .pre-colon {
 	text-transform: uppercase;
 }
-.rg-credit {
-	margin: 0;
-	color: #999;
-	text-transform: uppercase;
-	letter-spacing: 0.05em;
-	float: right;
-	text-align: right;
-	font-size: 0.65em;
-	line-height: 1.5em;
-}
-@media (max-width: 640px) {
-.rg-source-and-credit > div {
-	width: 100%;
-	display: block;
-	float: none;
-	text-align: right;
-}
-}
 /*styles for graphic*/
 table.rg-table {
 	margin: 0 0 1em 0;
