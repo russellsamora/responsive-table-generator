@@ -1,46 +1,40 @@
-/*styles for graphic info (hed, subhed, source, credit)*/
+
+/*styles for graphic info (hed, dek, source, credit)*/
 .rg-container {
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 16px;
-	line-height: 1;
+	line-height: 1.4;
 	margin: 0;
-	padding: 1em 0;
+	padding: 1em 0.5em;
 	color: #1a1a1a;
 }
 .rg-header {
 	margin-bottom: 1em;
 }
 .rg-hed {
-	font-family: "Benton Sans Bold", Helvetica, Arial, sans-serif;
 	font-weight: bold;
-	font-size: 1.2em;
-	margin-bottom: 0.25em;
+	font-size: 1.4em;
 }
-.rg-subhed {
-	font-size: 0.9em;
-	line-height: 1.4em;
+.rg-dek {
+	font-size: 1em;
 }
 .rg-source-and-credit {
-	font-family: Georgia,"Times New Roman", Times,serif;
 	width: 100%;
 	overflow: hidden;
-	margin-top: 1em;
 }
 .rg-source {
 	margin: 0;
 	float: left;
 	font-weight: bold;
 	font-size: 0.75em;
-	line-height: 1.5em;
 }
 .rg-source .pre-colon {
 	text-transform: uppercase;
 }
 /*styles for graphic*/
 table.rg-table {
-	margin: 0 0 1em 0;
 	width: 100%;
-	font-family: Helvetica, Arial, sans-serif;
+	margin-bottom: 0.5em;
 	font-size: 1em;
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -58,38 +52,36 @@ table.rg-table * {
 	color: #333;
 }
 table.rg-table thead {
-	border-bottom: 1px solid rgba(195,195,197,.3);
+	border-bottom: 1px solid #ddd;
 }
 table.rg-table th {
 	font-weight: bold;
-	padding: 0.5em;
+	padding: 0.5em 0;
 	font-size: 0.85em;
-	line-height: 1.4;
 }
 table.rg-table td {
-	padding: 0.5em;
+	padding: 0.5em 0;
 	font-size: 0.9em;
-	line-height: 1.4;
 }
 table.rg-table .highlight td {
 	font-weight: bold;
 }
 table.rg-table tr {
-	border-bottom: 1px solid rgba(195,195,197,.3);
+	border-bottom: 1px solid #ddd;
 	color: #222;
 }
-table.rg-table .number {
+table.rg-table th.number, td.number {
 	text-align: right;
 }
 table.rg-table.zebra tr:nth-child(even) {
-	background: rgba(195, 195, 197, 0.1);
+	background: #efefef;
 }
 table.rg-table tr.highlight {
-	background: #edece4;
+	background: #efefef;
 }
 @media screen and (max-width: @@max) {
 .rg-container {
-	max-width: 500px;
+	max-width: @@max;
 	margin: 0 auto;
 }
 table.rg-table {
@@ -149,6 +141,6 @@ table.rg-table.zebra tr:nth-child(even) {
 	background: none;
 }
 table.rg-table.zebra td:nth-child(even) {
-	background: rgba(195, 195, 197, 0.1);
+	background: #efefef;
 }
 }

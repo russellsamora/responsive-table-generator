@@ -1,17 +1,18 @@
-var gulp = require('gulp');
-var replace = require('gulp-replace-task');
-var fileinclude = require('gulp-file-include');
-var browserSync = require('browser-sync');
+const gulp = require('gulp')
+const replace = require('gulp-replace-task')
+const fileinclude = require('gulp-file-include')
+const browserSync = require('browser-sync')
+const babel = require('gulp-babel')
 
 // Default task to be run with `gulp`
-gulp.task('default', function () {
-    gulp.watch('src/table-style.css', ['replace-css']);
-    gulp.watch(['src/responsive-table.js', '.tmp/table-style.css'], ['replace-js']);
-    gulp.watch(['index.html', '*.css', '*.js'], ['browser-sync-reload']);
-    gulp.start('browser-sync');
-});
+gulp.task('default', () => {
+    gulp.watch('src/table-style.css', ['css'])
+    gulp.watch(['src/responsive-table.js', '.tmp/table-style.css'], ['js'])
+    gulp.watch(['index.html', '*.css', '*.js'], ['browser-sync-reload'])
+    gulp.start('browser-sync')
+})
 
-gulp.task('replace-css', function () {
+gulp.task('css', () => {
 	gulp.src('src/table-style.css')
 		.pipe(replace({
 			patterns: [
@@ -23,22 +24,23 @@ gulp.task('replace-css', function () {
 					replacement: '\\n'
 				}, {
 					match: 'max',
-					replacement: '\' + _input.breakpoint + \''
+					replacement: '${options.breakpoint}'
 				}
 			]
 		}))
-		.pipe(gulp.dest('.tmp'));
-});
+		.pipe(gulp.dest('.tmp'))
+})
 
-gulp.task('replace-js', function () {
+gulp.task('js', () => {
 	gulp.src('src/responsive-table.js')
 		.pipe(fileinclude())
+		.pipe(babel())
     	.pipe(gulp.dest('./'))
-    	.pipe(browserSync.reload({ stream: true }));
-});
+    	.pipe(browserSync.reload({ stream: true }))
+})
 
 // browser-sync task for starting the server.
-gulp.task('browser-sync', function() {
+gulp.task('browser-sync', () => {
     browserSync({
         server: {
             baseDir: './',
@@ -46,9 +48,9 @@ gulp.task('browser-sync', function() {
         },
         notify: false,
         ghostMode: false
-    });
-});
+    })
+})
 
-gulp.task('browser-sync-reload', function () {
-    browserSync.reload();
-});
+gulp.task('browser-sync-reload', () => {
+    browserSync.reload()
+})

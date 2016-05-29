@@ -1,336 +1,257 @@
 (function() {
-		var _output;
-		var _failed;
-		var _data;
-		var _input;
-		var _demo = 'Name\tCity\tRating\tPrice\nSuperette\tHolliston\t4.5\t$8.00\nTasty Treat\tAshland\t2.0\t$5.00\nBig Fresh\tFramingham\t5.0\t$9.00\nSeta\'s Cafe\tWatertown\t3.8\t$7.50';
-		var _copy = {
-			hed: 'Hed',
-			subhed: 'Subhed goes here.',
-			sourcePre: 'SOURCE',
-			sourcePost: 'Sources'
-		};
+	const dev = window.location.hostname.indexOf('localhost') > -1
+	const store = { data: [], columns: {}, highlightRows: [] }
+	const copy = {
+		hed: 'Hed',
+		dek: 'Dek goes here.',
+		sourcePre: 'SOURCE',
+		sourcePost: 'Sources',
+	}
+	
+	const options = {}
 
-	function init() {
-		bindEvents();
+	const debug = (name, data) => {
+		if (dev) {
+			console.log(`-- [debug: ${name}] --`)
+			console.log(data)
+			console.log('-- [end debug] -- ')
+			console.log('')
+		}
 	}
 
-	function bindEvents() {
-		$('.generate').on('click', function(e) {
-			e.preventDefault();	
-			_failed = false;
-			_data = {
-				headers: [],
-				rows: [],
-				className: []
-			};
+	const scrollTo = (scrollTop) => $('html, body').animate({ scrollTop }, 250)
 
-			var val = $('.input').val();
-			parseInput(val);
-			return false;
-		});
+	const getColumnNames = (row) => {
+		const columns = row.split('\t')
+		debug('columns', columns)
+		if(columns.length <= 1) throw new Error('not enough columns')
+		else {
+			return columns.map(c => c.trim())
+		}
+	}
 
+	const getData = (rows) => {
+		return rows.map(r => {
+			const columns = r.split('\t')
+			return columns.map(c => c.trim())
+		})
+	}
+
+ 	const parseInput = (input) => {
+		const rows = input.split('\n')
+		// must have more than just header
+		if(rows.length > 1) {
+			const names = getColumnNames(rows.shift())
+			const data = getData(rows)
+			// debug('data', data)
+			return { names, data }
+		} else {
+			throw new Error('not enough rows')
+		}
+	}
+
+	const displayColumnTypes = ({ columns, data }) => {
+		const types = dl.type.inferAll(data)
+		$('.column-types').empty()
+		const html = columns.names.map((h, i) => `
+			<div class='column-type'>
+				<span>${h}</span>
+				<div class='button-types'>
+					<button class='${types[i] === 'string' ? 'selected' : ''}'>Text</button>
+					<button class='${types[i] === 'number' ? 'selected' : ''}'>Number</button>
+				</div>
+			</div>
+		`.trim()).join('')
+		
+		$('.column-types').html(html)
+
+		$('.after').removeClass('hide')
+		
+		const position = $('.after').offset().top - 10
+		scrollTo(position)
+	}
+
+	const getColumnTypes = () => {
+		store.columns.types = []
+		$('.column-type').each(function(i) {
+			const el = $(this).find('.selected')
+			const colName = $(this).text().trim()
+			const colType = el.text().toLowerCase().trim()
+			store.columns.types[i] = colType
+		})
+	}
+	const createClass = (columnName, index) => {
+		const typeClass = store.columns.types[index]
+		const hideClass = options.hideColumns.find(c => c === columnName.toLowerCase()) ? 'hide-mobile' : ''
+		return `class='${typeClass}${hideClass}'`
+	}
+	const createTableHeaders = () => {
+		return store.columns.names.map((columnName, i) => {
+			const classAttr = createClass(columnName, i)
+			return `<th ${classAttr}>${columnName}</th>`
+		}).join('\n\t\t\t\t')
+	}
+
+	const createTableTd = (value, i) => {
+		const columnName = store.columns.names[i]
+		const classAttr = createClass(columnName, i)
+		return `
+			<td ${classAttr} data-title='${columnName}'>${value}</td>
+		`.trim()
+	}
+
+	const createTableBody = () => {
+		return store.data.map((row, i) => {
+			const hideClass = i < options.mobileRows ? '' : 'hide-mobile'
+			const highlightClass = store.highlightRows[i] ? ' highlight' : ''
+			const classAttr = `class='${hideClass}${highlightClass}'`
+			return `
+				<tr ${classAttr}>
+					${row.map((value, i) => createTableTd(value, i)).join('\n\t\t\t\t\t')}
+				</tr>
+			`
+		}).join('\n')
+	}
+
+	const createHTML = ({ editable }) => {
+		return `
+<style>@@include("../.tmp/table-style.css")</style>
+<div class='rg-container'>
+	<div class='rg-header'>
+		<div${editable} class='rg-hed'>${copy.hed}</div>
+		<div${editable} class='rg-dek'>${copy.dek}</div>
+	</div>
+	<div class='rg-content'>
+		<table class='rg-table${options.zebra ? ' zebra' : ''}'>
+			<thead>
+				${createTableHeaders()}
+			</thead>
+			<tbody>
+				${createTableBody()}
+			</tbody>
+		</table>
+	</div>
+	<div class='rg-source-and-credit'>
+		<div${editable} class='rg-source'>
+			<span class='pre-colon'>${copy.sourcePre}</span>: <span class='post-colon'>${copy.sourcePost}</span>
+		</div>
+	</div>
+</div>
+		`.trim()
+	}
+
+	const createTable = () => {
+		const html = createHTML({ editable: " contenteditable='true'" })
+
+		$('.preview').html(html)
+		$('.final').removeClass('hide');
+		$('.create-table').text('Update table')
+
+		const position = $('.final').offset().top - 10;
+		scrollTo(position)
+
+		$('.updated').removeClass('invisible')
+		setTimeout(() => {
+			$('.updated').addClass('invisible')
+		}, 1500)
+	}
+
+	const updateCopy = () => {
+		copy.hed = $('.rg-hed').text()
+		copy.subhed = $('.rg-subhed').text()
+		copy.sourcePre = $('.rg-source .pre-colon').text()
+		copy.sourcePost = $('.rg-source .post-colon').text()
+	}
+
+	const generateCode = () => {
+		updateCopy()
+
+		store.highlightRows = []
+
+		$('.rg-table tbody tr').each(function() {
+			store.highlightRows.push($(this).hasClass('highlight'))
+		})
+
+		const html = createHTML({ editable: '' })
+
+		$('.output-code').val(html)
+	}
+
+	const bindEvents = () => {
 		$('.demo').on('click', function(e) {
-			e.preventDefault();
-			$('.input').val(_demo);
-			return false;
-		});
+			e.preventDefault()
+			const demoData = 'Name\tCity\tPrice\tRating\nSuperette\tHolliston\t$8.00\t4.5\nTasty Treat\tAshland\t$5.00\t2.0\nBig Fresh\tFramingham\t$9.00\t5.0\nSeta\'s Cafe\tWatertown\t$7.50\t3.8'
+			$('.input').val(demoData)
+			return false
+		})
 
-		$('.header-choices').on('click', 'button', function() {
-			$(this).siblings().removeClass('current-choice');
-			$(this).addClass('current-choice');
-		});
+		$('.get-started').on('click', function(e) {
+			e.preventDefault()
+			if (!dev) ga('send', 'event', 'Get started', 'click', 'Get started button')
+			try {
+				const { names, data }  = parseInput($('.input').val())
+				store.columns.names = names
+				store.data = data
+				displayColumnTypes(store)
+			} catch (error) {
+				alert(error)
+				console.error(error)
+			}
+			
+			return false
+		})
+
+		$('.column-types').on('click', 'button', function() {
+			$(this).siblings().removeClass('selected')
+			$(this).addClass('selected')
+		})
+
+		$('.zebra-buttons').on('click', 'button', function() {
+			$(this).siblings().removeClass('selected')
+			$(this).addClass('selected')	
+		})
+
+		$('.mobile-rows-slider').on('input', function() {
+			$('.mobile-rows-text').val(this.value)
+		})
+
+		$('.breakpoint-slider').on('input', function() {
+			$('.breakpoint-text').val(this.value + 'px')
+		})
 
 		$('.create-table').on('click', function() {
-			getColumnTypes();
-			var input = {
-				mobileRows: $('.mobile-rows').val() || 9999,
-				zebra: $('.zebra:checked').val() ? true : false,
-				hideColumns: $('.hide-columns').val(),
-				breakpoint: $('#breakpoint-text').val()
-			};
-			$('.output').val('');
-			customize(input);
-		});
+			getColumnTypes()
+			
+			const mobileRowsVal = +$('.mobile-rows-text').val()
+			options.mobileRows =  isNaN(mobileRowsVal) ? 10 : mobileRowsVal
+			
+			const zebraChoice = $('.zebra-buttons').find('.selected').text().toLowerCase().trim()
+			debug('zebra', zebraChoice)
+			options.zebra = zebraChoice === 'on' ? true : false
+			
+			options.hideColumns = $('.hide-columns').val().split(',').map(v => v.trim().toLowerCase()).filter(v => v)
+			const breakpointVal = +$('.breakpoint-text').val().split('px')[0]
+			options.breakpoint =  isNaN(breakpointVal) ? '600px' : `${breakpointVal}px`
+			
+			createTable()
+		})
 
 		$('.modify').on('click', function() {
-			var scrollTo = $('.after').offset().top - 10;
-			$('html, body').animate({
-				scrollTop: scrollTo
-			}, 250);
-		});
+			const position = $('.after').offset().top - 10
+			scrollTo(position)
+		})
+	
+		$('.generate-code').on('click', generateCode)
 
-		$('#breakpoint-slider').on('input', function() {
-			$('#breakpoint-text').val(this.value + 'px');
-		});
-
-		$('.generate-code').on('click', function() {
-			generateCode();
-		});
-
-		$('.preview').on('click', '.rg-table tr', function() {
-			$(this).toggleClass('highlight');
-		});
+		$('.preview').on('click', '.rg-table tbody tr', function() {
+			$(this).toggleClass('highlight')
+		})
+	}
+	
+	const init = () => {
+		console.log('v1.0.0')
+		bindEvents()
 	}
 
- 	function parseInput(input) {
-		var lines = input.split('\n');
-		if(lines.length > 1) {
-			setHeaders(lines[0]);
-			if(_data.headers) {
-				setNumericColumns(lines[1]);
-				setRows(lines.slice(1));
-			}
-		} else {
-			_failed = 'no rows';
-		}
-		displayHeaderTypes();
-	}
-
-	function setHeaders(line) {
-		var headers = line.split('\t');
-		if(headers.length === 1 && !headers[0]) {
-			_failed = 'no headers';
-		} else {
-			for(var i = 0; i < headers.length; i++) {
-				var h = headers[i].trim();
-				_data.headers.push(h);
-			}
-		}
-	}
-
-	function setRows(lines) {
-		for(var i = 0; i < lines.length; i++) {
-			var l = lines[i];
-			var cols = lines[i].split('\t');
-			_data.rows[i] = [];
-			for(var j = 0; j < cols.length; j++) {
-				_data.rows[i][j] = cols[j].trim();
-			}
-		}
-	}
-
-	function setNumericColumns(line) {
-		var cols = line.split('\t');
-		for(var i = 0; i < cols.length; i++) {
-			var val = cols[i].trim();
-		}
-	}
-
-	function displayHeaderTypes() {
-		if(_failed) {
-			alert('error: ' + _failed);
-		} else {
-			$('.header-choices').empty();
-			for(var i = 0; i < _data.headers.length; i++) {
-				var html = '<div class="header-choice"><span>' + _data.headers[i] + ':</span> ';
-				html += '<div class="button-choices"><button class="current-choice">Text</button><button>Number</button></div></div>';
-				$('.header-choices').append(html);
-			}
-			$('.after').removeClass('hide');
-			var scrollTo = $('.after').offset().top - 10;
-			$('html, body').animate({
-				scrollTop: scrollTo
-			}, 250);
-		}
-	}
-
-	function createTable() {
-		var $container = $('<div class="rg-container"></div>');
-		var $header = $('<div class="rg-header"></div>');
-		var $hed = $('<div contenteditable="true" class="rg-hed">' + _copy.hed + '</div>');
-		var $subhed = $('<div contenteditable="true" class="rg-subhed">' + _copy.subhed + '</div>');
-		var $content = $('<div class="rg-content"></div>');
-		var $sourceCredit = $('<div class="rg-source-and-credit"></div>');
-		var $source = $('<div contenteditable="true" class="rg-source"><span class="pre-colon">' + _copy.sourcePre + '</span>: <span class="post-colon">' + _copy.sourcePost + '</span></div>');
-		
-		var $inlineStyle = '<style>@@include("../.tmp/table-style.css")</style>';
-		
-		var tableContent = '';
-
-		var tableClasses = 'rg-table';
-		if(_input.zebra) {
-			tableClasses += ' zebra';	
-		}
-		tableContent += '<table class="' + tableClasses + '"><thead>';
-
-		for (var i = 0; i < _data.headers.length; i++) {
-			var valTh = _data.headers[i];
-			var classesTh = _input.hideColumns[valTh] ? 'hide-mobile ' : '';
-			classesTh += _data.className[i] + ' rg-th';
-
-			var htmlTh = '<th class="'+ classesTh + '">' + _data.headers[i] + '</th>';
-			
-			tableContent += htmlTh;
-		}
-
-		tableContent += '</thead>';
-		tableContent += '<tbody>';
-
-		for (var a = 0; a < _data.rows.length; a++) {
-			var row = _data.rows[a];
-			
-			var hideMobile = a < _input.mobileRows ? '' : ' class="hide-mobile"';
-			
-			tableContent += '<tr' + hideMobile + '>';
-
-			for (var b = 0; b < row.length; b++) {
-				var valCol = _data.headers[b];
-				var classesTd = _input.hideColumns[valCol] ? 'hide-mobile ' : '';
-				classesTd += _data.className[b];
-
-				var htmlTd = '<td class="' + classesTd + '" data-title="' + valCol + '">' + row[b] + '</td>';
-
-				tableContent += htmlTd;
-			}
-
-			tableContent += '</tr>';
-		}
-		tableContent += '</tbody></table>';
-		
-		$content.append(tableContent);
-
-		$sourceCredit.append($source);
-		$header.append($hed);
-		$header.append($subhed);
-		
-		$container.append($inlineStyle);
-		$container.append($header);
-		$container.append($content);
-		$container.append($sourceCredit);
-
-		$('.preview').empty().append($container);
-		$('.final').removeClass('hide');
-		$('.create-table').text('Update table');
-
-		var scrollTo = $('.final').offset().top - 10;
-		$('html, body').animate({
-			scrollTop: scrollTo
-		}, 250);
-
-		$('.updated').removeClass('invisible');
-		setTimeout(function(){
-			$('.updated').addClass('invisible');
-		}, 1500);
-	}
-
-	function generateCode() {
-		updateCopy();
-
-		var highlight = {};
-
-		$('.rg-table tr').each(function() {
-			if($(this).hasClass('highlight')) {
-				var index = $(this).index();
-				highlight[index] = true;
-			}
-		});
-
-		var html = '';
-
-		var css = '@@include("../.tmp/table-style.css")';
-
-		html += '<style>' + css + '\n</style>';
-
-		html += '\n<div class="rg-container">';
-		html += '\n\t<div class="rg-header">';
-
-		if(_copy.hed.length > 0 ) {
-			html += '\n\t\t<div class="rg-hed">' + _copy.hed + '</div>';	
-		}
-		if(_copy.subhed.length > 0 ) {
-			html += '\n\t\t<div class="rg-subhed">' + _copy.subhed + '</div>';	
-		}
-		html += '\n\t</div>';
-		html += '\n\t<div class="rg-content">';
-		if(_input.zebra) {
-			html += '\n\t\t<table class="rg-table zebra">';
-		} else {
-			html += '\n\t\t<table class="rg-table">';
-		}
-		
-		html += '\n\t\t\t<thead>';
-
-		for (var i = 0; i < _data.headers.length; i++) {
-			var valTh = _data.headers[i];
-			var classesTh = _input.hideColumns[valTh] ? 'hide-mobile ' : '';
-			classesTh += _data.className[i] + ' rg-th';
-
-			var htmlTh = '\n\t\t\t\t<th class="'+ classesTh + '">' + _data.headers[i] + '</th>';
-			
-			html += htmlTh;
-		}
-
-		html += '\n\t\t\t</thead>';
-		html += '\n\t\t\t<tbody>';
-
-		for (var a = 0; a < _data.rows.length; a++) {
-			var row = _data.rows[a];
-			var trClasses = '';
-			trClasses += a < _input.mobileRows ? '' : 'hide-mobile';
-			if(highlight[a]) {
-				trClasses += ' highlight';
-			}
-			if(trClasses) {
-				html += '\n\t\t\t\t<tr class="' + trClasses + '">';	
-			} else {
-				html += '\n\t\t\t\t<tr>';
-			}
-
-			for (var b = 0; b < row.length; b++) {
-				var valCol = _data.headers[b];
-				var classesTd = _input.hideColumns[valCol] ? 'hide-mobile ' : '';
-				classesTd += _data.className[b];
-
-				var htmlTd = '\n\t\t\t\t\t\t<td class="' + classesTd + '" data-title="' + valCol + '">' + row[b] + '</td>';
-
-				html += htmlTd;
-			}
-
-			html += '\n\t\t\t\t</tr>';
-		}
-		html += '\n\t\t\t</tbody>';
-		html += '\n\t\t</table>';
-		html += '\n\t</div>';
-
-		html += '\n\t<div class="rg-source-and-credit">';
-		html += '\n\t\t<div class="rg-source"><span class="pre-colon">' + _copy.sourcePre + '</span>: <span class="post-colon">' + _copy.sourcePost + '</span></div>';
-		html += '\n\t</div>';
-
-		html += '\n</div>';
-
-		$('.output-code').val(html);
-	}
-
-	function updateCopy() {
-		_copy.hed = $('.rg-hed').text();
-		_copy.subhed = $('.rg-subhed').text();
-		_copy.sourcePre = $('.rg-source .pre-colon').text();
-		_copy.sourcePost = $('.rg-source .post-colon').text();
-	}
-
-	function customize(input) {
-		if(input.hideColumns) {
-			var names = input.hideColumns.split(',');
-			input.hideColumns = {};
-			for(var i = 0; i < names.length; i++) {
-				input.hideColumns[names[i].trim()] = true;
-			}
-		} else {
-			input.hideColumns = {};
-		}
-
-		_input = input;
-		createTable();
-	}
-
-	function getColumnTypes() {
-		$('.header-choice').each(function(i) {
-			var el = $(this).find('.current-choice');
-			var t = el.text().toLowerCase().trim();
-			_data.className[i] = t;
-		});
-	}
-
-	init();
-})();
+	init()
+})()
