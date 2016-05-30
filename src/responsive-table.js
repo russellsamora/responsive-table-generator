@@ -83,7 +83,7 @@
 	const createClass = (columnName, index) => {
 		const typeClass = store.columns.types[index]
 		const hideClass = options.hideColumns.find(c => c === columnName.toLowerCase()) ? 'hide-mobile' : ''
-		return `class='${typeClass}${hideClass}'`
+		return `class='${typeClass} ${hideClass}'`
 	}
 	const createTableHeaders = () => {
 		return store.columns.names.map((columnName, i) => {

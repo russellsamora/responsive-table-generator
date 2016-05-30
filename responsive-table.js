@@ -89,7 +89,7 @@
 		var hideClass = options.hideColumns.find(function (c) {
 			return c === columnName.toLowerCase();
 		}) ? 'hide-mobile' : '';
-		return 'class=\'' + typeClass + hideClass + '\'';
+		return 'class=\'' + typeClass + ' ' + hideClass + '\'';
 	};
 	var createTableHeaders = function createTableHeaders() {
 		return store.columns.names.map(function (columnName, i) {
