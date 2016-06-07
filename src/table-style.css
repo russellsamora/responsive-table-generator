@@ -1,5 +1,4 @@
-
-/*styles for graphic info (hed, dek, source, credit)*/
+/* info (hed, dek, source, credit) */
 .rg-container {
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 16px;
@@ -31,7 +30,8 @@
 .rg-source .pre-colon {
 	text-transform: uppercase;
 }
-/*styles for graphic*/
+
+/* table */
 table.rg-table {
 	width: 100%;
 	margin-bottom: 0.5em;
@@ -54,31 +54,33 @@ table.rg-table * {
 table.rg-table thead {
 	border-bottom: 1px solid #ddd;
 }
+table.rg-table tr {
+	border-bottom: 1px solid #ddd;
+	color: #222;
+}
+table.rg-table tr.highlight {
+	background: #efefef;
+}
+table.rg-table.zebra tr:nth-child(even) {
+	background: #efefef;
+}
 table.rg-table th {
 	font-weight: bold;
-	padding: 0.5em 0;
-	font-size: 0.85em;
+	padding: 0.35em;
+	font-size: 0.9em;
 }
 table.rg-table td {
-	padding: 0.5em 0;
+	padding: 0.35em;
 	font-size: 0.9em;
 }
 table.rg-table .highlight td {
 	font-weight: bold;
 }
-table.rg-table tr {
-	border-bottom: 1px solid #ddd;
-	color: #222;
-}
 table.rg-table th.number, td.number {
 	text-align: right;
 }
-table.rg-table.zebra tr:nth-child(even) {
-	background: #efefef;
-}
-table.rg-table tr.highlight {
-	background: #efefef;
-}
+
+/* media queries */
 @media screen and (max-width: @@max) {
 .rg-container {
 	max-width: @@max;
@@ -98,13 +100,31 @@ table.rg-table tbody {
 	display: block;
 	width: 100%;
 }
-table.rg-table td:last-child {
-	padding-right: 0;
-	border-bottom: 2px solid #ccc;
-}
 table.rg-table tr, table.rg-table th, table.rg-table td {
 	display: block;
 	padding: 0;
+}
+table.rg-table tr {
+	border-bottom: none;
+	margin: 0 0 1em 0;
+	padding: 0.5em 0;
+}
+table.rg-table tr.highlight {
+	background: none;
+}
+table.rg-table.zebra tr:nth-child(even) {
+	background: none;
+}
+table.rg-table.zebra td:nth-child(even) {
+	background: #efefef;
+}
+table.rg-table tr:nth-child(even) {
+	background: none;
+}
+table.rg-table td {
+	padding: 0.5em 0 0.25em 0;
+	border-bottom: 1px dotted #ccc;
+	text-align: right;
 }
 table.rg-table td[data-title]:before {
 	content: attr(data-title) ":\00A0";
@@ -115,32 +135,14 @@ table.rg-table td[data-title]:before {
 	margin-right: 0.5em;
 	font-size: 0.95em;
 }
-table.rg-table tr {
-	border-bottom: none;
-	margin: 0 0 1em 0;
-	padding: 0.5em 0;
-}
-table.rg-table tr:nth-child(even) {
-	background: none;
-}
-table.rg-table td {
-	padding: 0.5em 0 0.25em 0;
-	border-bottom: 1px dotted #ccc;
-	text-align: right;
+table.rg-table td:last-child {
+	padding-right: 0;
+	border-bottom: 2px solid #ccc;
 }
 table.rg-table td:empty {
 	display: none;
 }
 table.rg-table .highlight td {
 	background: none;
-}
-table.rg-table tr.highlight {
-	background: none;
-}
-table.rg-table.zebra tr:nth-child(even) {
-	background: none;
-}
-table.rg-table.zebra td:nth-child(even) {
-	background: #efefef;
 }
 }
