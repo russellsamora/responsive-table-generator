@@ -158,7 +158,7 @@
 
 	const updateCopy = () => {
 		copy.hed = $('.rg-hed').text()
-		copy.subhed = $('.rg-subhed').text()
+		copy.dek = $('.rg-dek').text()
 		copy.sourcePre = $('.rg-source .pre-colon').text()
 		copy.sourcePost = $('.rg-source .post-colon').text()
 	}
