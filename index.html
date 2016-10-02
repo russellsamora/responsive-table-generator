@@ -7,14 +7,16 @@
         <meta name='description' content='A CSS and HTML responsive table generator by Russell Goldenberg.'>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <link rel='stylesheet' href='http://russellgoldenberg.github.io/responsive-table-generator/base.css'>
+        <!-- smoosh -->
         <link rel='stylesheet' href='table-generator.css'>
-        <link rel='stylesheet' href='table-style.css'>
+        <!-- endsmoosh -->
         <link rel='shortcut icon' type='image/png' href='favicon.png'>
     </head>
     <body>
+        <p class='using'>I would love to know where and how people are using this tool in the wild, so please shoot me a quick e-mail with a url &rarr; russellgoldenberg@gmail.com</p>
         <div class='container'>
             <section>
-                <h2>Responsive Table Generator v0.3</h2>
+                <h2>Responsive Table Generator v1.0.0</h2>
                 <p class='intro'>
                     A complete HTML/CSS solution for quick &amp; elegant responsive tables. Code is unminified for easy customization.
                 </p>
@@ -23,36 +25,43 @@
                     <a class='demo' href='#'>Load sample data</a>.
                 </p>
                 <textarea class='input'></textarea>
-                <button class='generate'>Get started</button>
+                <button class='get-started'>Get started</button>
             </section>
             <section>
                 <div class='after hide'>
                     <div class='prompt-headers'>
                         <h3>Select Column Types</h3>
-                        <p class='instructions'>Choose the type of value for each column.</p>
-                        <div class='header-choices'></div>
+                        <p class='instructions'>Choose the type of value for each column (this affects text alignment).</p>
+                        <div class='column-types'></div>
                     </div>
                     <h3>Options</h3>
-                    <p class='instructions'>Max # of rows to show on mobile? (suggeted: 5-10)</p>
-                    <input class='mobile-rows' placeholder='5'>
+                    <p class='instructions'>Max # of rows to show on mobile? [default: show all] (<strong>recommended:</strong> 5 to 10)</p>
+                    <div class='mobile-rows-container'>
+                        <input class='mobile-rows-slider' type='range' min='1' max='100' step='1' value='5'>
+                        <input class='mobile-rows-text' value='5'>
+                    </div>
                     <p class='instructions'>
-                        Columns to hide on mobile? (comma-delimited, column header names as they appear above)
+                        Columns to hide on mobile? [default: hide none] (comma-delimited column names)
                     </p>
                     <input class='hide-columns' placeholder='City,Price'>
                     <p class='instructions'>
-                        At what breakpoint to switch to mobile version? (resize to see)
+                        When to switch to mobile layout? [default: 600px] (resize browser and click "update table" to see effect)
                     </p>
                     <div class='breakpoint-container'>
-                        <input id='breakpoint-slider' type='range' min='240' max='1200' step='1' value='500'>
-                        <input id='breakpoint-text' value='500px'>
+                        <input class='breakpoint-slider' type='range' min='240' max='1200' step='1' value='600'>
+                        <input class='breakpoint-text' value='600px'>
                     </div>
                     <p class='instructions'>Zebra striping?</p>
-                    <input type='checkbox' class='zebra'>
+                    <!-- <input type='checkbox' class='zebra'> -->
+                    <div class='zebra-buttons'>
+                        <button>On</button>
+                        <button class='selected'>Off</button>
+                    </div>
                     <button class='create-table'>Create table</button>
                     <div class='final hide'>
                         <h3>Preview</h3>
                         <p>
-                            Replace underlined text with your copy below, then click 'generate code'. If you don't want a hed or a subhed, delete the contents. The generated code will remove the whitespace. Click a row to toggle on/off highlighting. <em>Table truncates at 10 on mobile. If you need more, talk to graphics team.</em>
+                            Replace underlined text with your copy below, then click "generate code". If you don't want a hed or a dek, simply delete the contents. The generated code will remove the whitespace. Click a row to toggle highlighting.
                         </p>
                         <p class='updated invisible'>updated options</p>
                         <div class='preview'></div>
@@ -66,10 +75,10 @@
                     <button class='modify'>Modify settings</button>
                 </div>
                 <div class='credits'>
-                    <p>Inspired by <a target='_blank' href='http://blog.apps.npr.org/2014/05/09/responsive-data-tables.html'>NPR</a>. See the <a target='_blank' href='https://github.com/russellgoldenberg/esponsive-table-generator'>github repo</a> to submit issues and/or feature requests.
+                    <p>Inspired by <a target='_blank' href='http://blog.apps.npr.org/2014/05/09/responsive-data-tables.html'>NPR</a>. See the <a target='_blank' href='https://github.com/russellgoldenberg/responsive-table-generator'>github repo</a> to submit issues and/or feature requests.
                     </p>
                     <p>
-                        Email russell.goldenberg@globe.com for Globe related questions.
+                        Email russellgoldenberg@gmail.com with any questions.
                     </p>
                     <p class='russell'>
                         <a target='_blank' href='http://russellgoldenberg.com'><img src='http://russellgoldenberg.com/img/codenberg.png'></a>
@@ -79,7 +88,11 @@
         </div>
     </body>
     <script src='jquery.min.js'></script>
+    <script src='datalib.min.js'></script>
+    <script src='find-polyfill.js'></script>
+    <!-- smoosh -->
     <script src='responsive-table.js'></script>
+    <!-- endsmoosh -->
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

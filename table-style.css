@@ -101,15 +101,16 @@ table.rg-table.zebra tr:nth-child(even) {
 	background: rgba(195, 195, 197, 0.1);
 }
 table.rg-table tr.highlight {
-	background: #edece4 !important;
+	background: #edece4;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: ' + _input.breakpoint + ') {
+.rg-container {
+	max-width: 500px;
+	margin: 0 auto;
+}
 table.rg-table {
 	display: block;
 	width: 100%;
-}
-table.rg-table .number {
-	text-align: left;
 }
 table.rg-table tr.hide-mobile, table.rg-table th.hide-mobile, table.rg-table td.hide-mobile {
 	display: none;
@@ -121,11 +122,9 @@ table.rg-table tbody {
 	display: block;
 	width: 100%;
 }
-table.rg-table td:first-child {
-	padding-left:0;
-}
 table.rg-table td:last-child {
-	padding-right:0;
+	padding-right: 0;
+	border-bottom: 2px solid #ccc;
 }
 table.rg-table tr, table.rg-table th, table.rg-table td {
 	display: block;
@@ -134,26 +133,36 @@ table.rg-table tr, table.rg-table th, table.rg-table td {
 table.rg-table th[data-title]:before, table.rg-table td[data-title]:before {
 	content: attr(data-title) ":\00A0";
 	font-weight: bold;
+	display: inline-block;
+	content: attr(data-title);
+	float: left;
 }
 table.rg-table tr {
-	border-bottom: 1px solid rgba(195,195,197,.3);
-	margin: 0;
+	border-bottom: none;
+	margin: 0 0 1em 0;
 	padding: 0.5em 0;
 }
 table.rg-table tr:nth-child(even) {
 	background: none;
 }
 table.rg-table td {
-	padding: 0.25em 0 0 0;
+	padding: 0.5em 0 0.25em 0;
+	border-bottom: 1px dotted #ccc;
+	text-align: right;
 }
 table.rg-table td:empty {
 	display: none;
 }
-table.rg-table td:first-child {
-	font-size: 1.1em;
-	font-weight: bold;
+table.rg-table .highlight td {
+	background: none;
 }
-table.rg-table td:first-child:before {
-	content: "";
+table.rg-table tr.highlight {
+	background: none;
+}
+table.rg-table.zebra tr:nth-child(even) {
+	background: none;
+}
+table.rg-table.zebra td:nth-child(even) {
+	background: rgba(195, 195, 197, 0.1);
 }
 }

@@ -9,5 +9,10 @@ HTML/CSS only responsive table generator for your next table.
 ### Browser compatibility
 Probably everything.
 
-### In the wild
-[A Boston Globe example](http://www.bostonglobe.com/sports/2014/12/17/tom-brady-rob-gronkowski-top-after-fan-pro-bowl-voting/OEIeVE3h9dPbo8b6Y5izkI/story.html)
+### Development
+Requires [node](http://nodejs.org)
+
+- Run `npm install`
+- Then run `gulp`
+
+The two key things to edit are `src/responsive-table.js` and `src/table-style.css`.
