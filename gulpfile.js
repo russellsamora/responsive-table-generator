@@ -35,7 +35,7 @@ gulp.task('js', () => {
 	gulp.src('src/responsive-table.js')
 		.pipe(fileinclude())
 		.pipe(babel())
-    	.pipe(gulp.dest('./'))
+    	.pipe(gulp.dest('./docs'))
     	.pipe(browserSync.reload({ stream: true }))
 })
 
@@ -43,7 +43,7 @@ gulp.task('js', () => {
 gulp.task('browser-sync', () => {
     browserSync({
         server: {
-            baseDir: './',
+            baseDir: './docs',
             index: 'index.html'
         },
         notify: false,
