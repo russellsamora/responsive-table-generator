@@ -65,10 +65,10 @@ table.rg-table tr {
 	color: #222;
 }
 table.rg-table tr.highlight {
-	background: #dcf1f0 !important;
+	background-color: #dcf1f0 !important;
 }
 table.rg-table.zebra tr:nth-child(even) {
-	background: #f9fafb;
+	background-color: #f9fafb;
 }
 table.rg-table th {
 	font-weight: bold;
@@ -114,16 +114,16 @@ table.rg-table tr {
 	padding: 0.5em;
 }
 table.rg-table tr.highlight {
-	background: none;
+	background-color: none;
 }
 table.rg-table.zebra tr:nth-child(even) {
-	background: none;
+	background-color: none;
 }
 table.rg-table.zebra td:nth-child(even) {
-	background: #f9fafb;
+	background-color: #f9fafb;
 }
 table.rg-table tr:nth-child(even) {
-	background: none;
+	background-color: none;
 }
 table.rg-table td {
 	padding: 0.5em 0 0.25em 0;
@@ -147,6 +147,6 @@ table.rg-table td:empty {
 	display: none;
 }
 table.rg-table .highlight td {
-	background: none;
+	background-color: none;
 }
 }
