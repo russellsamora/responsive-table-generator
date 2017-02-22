@@ -22,18 +22,18 @@
 .rg-dek {
 	font-size: 1em;
 }
-.rg-source-and-credit {
-	width: 100%;
-	overflow: hidden;
-}
+
 .rg-source {
 	margin: 0;
-	float: left;
-	font-weight: bold;
 	font-size: 0.75em;
+	text-align: right;
 }
 .rg-source .pre-colon {
 	text-transform: uppercase;
+}
+
+.rg-source .post-colon {
+	font-weight: bold;
 }
 
 /* table */

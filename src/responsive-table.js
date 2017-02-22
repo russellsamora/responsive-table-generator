@@ -133,10 +133,8 @@
 			</tbody>
 		</table>
 	</div>
-	<div class='rg-source-and-credit'>
-		<div${editable} class='rg-source'>
-			<span class='pre-colon'>${copy.sourcePre}</span>: <span class='post-colon'>${copy.sourcePost}</span>
-		</div>
+	<div class='rg-source'>
+		<span${editable} class='pre-colon'>${copy.sourcePre}</span>: <span${editable} class='post-colon'>${copy.sourcePost}</span>
 	</div>
 </div>
 		`.trim()
