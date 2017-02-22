@@ -92,7 +92,6 @@ table.rg-table th.number, td.number {
 	margin: 0 auto;
 }
 table.rg-table {
-	display: block;
 	width: 100%;
 }
 table.rg-table tr.hide-mobile, table.rg-table th.hide-mobile, table.rg-table td.hide-mobile {
@@ -102,7 +101,6 @@ table.rg-table thead {
 	display: none;
 }
 table.rg-table tbody {
-	display: block;
 	width: 100%;
 }
 table.rg-table tr, table.rg-table th, table.rg-table td {
