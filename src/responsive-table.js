@@ -115,7 +115,10 @@
 
 	const createHTML = ({ editable }) => {
 		return `
-<style>@@include("../.tmp/table-style.css")</style>
+<style>
+	@import url('https://fonts.googleapis.com/css?family=Lato:400,900');
+	@@include("../.tmp/table-style.css")
+</style>
 <div class='rg-container'>
 	<div class='rg-content'>
 		<table class='rg-table${options.zebra ? ' zebra' : ''}' summary='${copy.hed}'>
