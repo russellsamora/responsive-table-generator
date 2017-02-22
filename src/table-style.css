@@ -9,6 +9,11 @@
 }
 .rg-header {
 	margin-bottom: 1em;
+	text-align: left;
+}
+
+.rg-header > * {
+	display: block;
 }
 .rg-hed {
 	font-weight: bold;
@@ -39,7 +44,7 @@ table.rg-table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-table.rg-table * {
+table.rg-table tr {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	margin: 0;

@@ -58,8 +58,8 @@
 	};
 
 	var displayColumnTypes = function displayColumnTypes(_ref) {
-		var columns = _ref.columns;
-		var data = _ref.data;
+		var columns = _ref.columns,
+		    data = _ref.data;
 
 		var types = dl.type.inferAll(data);
 		$('.column-types').empty();
@@ -118,7 +118,7 @@
 	var createHTML = function createHTML(_ref2) {
 		var editable = _ref2.editable;
 
-		return ('\n<style>/* info (hed, dek, source, credit) */\n.rg-container {\n\tfont-family: Helvetica, Arial, sans-serif;\n\tfont-size: 16px;\n\tline-height: 1.4;\n\tmargin: 0;\n\tpadding: 1em 0.5em;\n\tcolor: #1a1a1a;\n}\n.rg-header {\n\tmargin-bottom: 1em;\n}\n.rg-hed {\n\tfont-weight: bold;\n\tfont-size: 1.4em;\n}\n.rg-dek {\n\tfont-size: 1em;\n}\n.rg-source-and-credit {\n\twidth: 100%;\n\toverflow: hidden;\n}\n.rg-source {\n\tmargin: 0;\n\tfloat: left;\n\tfont-weight: bold;\n\tfont-size: 0.75em;\n}\n.rg-source .pre-colon {\n\ttext-transform: uppercase;\n}\n\n/* table */\ntable.rg-table {\n\twidth: 100%;\n\tmargin-bottom: 0.5em;\n\tfont-size: 1em;\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\ntable.rg-table * {\n\t-moz-box-sizing: border-box;\n\tbox-sizing: border-box;\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n\ttext-align: left;\n\tcolor: #333;\n}\ntable.rg-table thead {\n\tborder-bottom: 1px solid #ddd;\n}\ntable.rg-table tr {\n\tborder-bottom: 1px solid #ddd;\n\tcolor: #222;\n}\ntable.rg-table tr.highlight {\n\tbackground: #efefef;\n}\ntable.rg-table.zebra tr:nth-child(even) {\n\tbackground: #efefef;\n}\ntable.rg-table th {\n\tfont-weight: bold;\n\tpadding: 0.35em;\n\tfont-size: 0.9em;\n}\ntable.rg-table td {\n\tpadding: 0.35em;\n\tfont-size: 0.9em;\n}\ntable.rg-table .highlight td {\n\tfont-weight: bold;\n}\ntable.rg-table th.number, td.number {\n\ttext-align: right;\n}\n\n/* media queries */\n@media screen and (max-width: ' + options.breakpoint + ') {\n.rg-container {\n\tmax-width: ' + options.breakpoint + ';\n\tmargin: 0 auto;\n}\ntable.rg-table {\n\tdisplay: block;\n\twidth: 100%;\n}\ntable.rg-table tr.hide-mobile, table.rg-table th.hide-mobile, table.rg-table td.hide-mobile {\n\tdisplay: none;\n}\ntable.rg-table thead {\n\tdisplay: none;\n}\ntable.rg-table tbody {\n\tdisplay: block;\n\twidth: 100%;\n}\ntable.rg-table tr, table.rg-table th, table.rg-table td {\n\tdisplay: block;\n\tpadding: 0;\n}\ntable.rg-table tr {\n\tborder-bottom: none;\n\tmargin: 0 0 1em 0;\n\tpadding: 0.5em 0;\n}\ntable.rg-table tr.highlight {\n\tbackground: none;\n}\ntable.rg-table.zebra tr:nth-child(even) {\n\tbackground: none;\n}\ntable.rg-table.zebra td:nth-child(even) {\n\tbackground: #efefef;\n}\ntable.rg-table tr:nth-child(even) {\n\tbackground: none;\n}\ntable.rg-table td {\n\tpadding: 0.5em 0 0.25em 0;\n\tborder-bottom: 1px dotted #ccc;\n\ttext-align: right;\n}\ntable.rg-table td[data-title]:before {\n\tcontent: attr(data-title);\n\tfont-weight: bold;\n\tdisplay: inline-block;\n\tcontent: attr(data-title);\n\tfloat: left;\n\tmargin-right: 0.5em;\n\tfont-size: 0.95em;\n}\ntable.rg-table td:last-child {\n\tpadding-right: 0;\n\tborder-bottom: 2px solid #ccc;\n}\ntable.rg-table td:empty {\n\tdisplay: none;\n}\ntable.rg-table .highlight td {\n\tbackground: none;\n}\n}\n</style>\n<div class=\'rg-container\'>\n\t<div class=\'rg-header\'>\n\t\t<div' + editable + ' class=\'rg-hed\'>' + copy.hed + '</div>\n\t\t<div' + editable + ' class=\'rg-dek\'>' + copy.dek + '</div>\n\t</div>\n\t<div class=\'rg-content\'>\n\t\t<table class=\'rg-table' + (options.zebra ? ' zebra' : '') + '\'>\n\t\t\t<thead>\n\t\t\t\t' + createTableHeaders() + '\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t' + createTableBody() + '\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t<div class=\'rg-source-and-credit\'>\n\t\t<div' + editable + ' class=\'rg-source\'>\n\t\t\t<span class=\'pre-colon\'>' + copy.sourcePre + '</span>: <span class=\'post-colon\'>' + copy.sourcePost + '</span>\n\t\t</div>\n\t</div>\n</div>\n\t\t').trim();
+		return ('\n<style>/* info (hed, dek, source, credit) */\n.rg-container {\n\tfont-family: Helvetica, Arial, sans-serif;\n\tfont-size: 16px;\n\tline-height: 1.4;\n\tmargin: 0;\n\tpadding: 1em 0.5em;\n\tcolor: #1a1a1a;\n}\n.rg-header {\n\tmargin-bottom: 1em;\n\ttext-align: left;\n}\n\n.rg-header > * {\n\tdisplay: block;\n}\n.rg-hed {\n\tfont-weight: bold;\n\tfont-size: 1.4em;\n}\n.rg-dek {\n\tfont-size: 1em;\n}\n.rg-source-and-credit {\n\twidth: 100%;\n\toverflow: hidden;\n}\n.rg-source {\n\tmargin: 0;\n\tfloat: left;\n\tfont-weight: bold;\n\tfont-size: 0.75em;\n}\n.rg-source .pre-colon {\n\ttext-transform: uppercase;\n}\n\n/* table */\ntable.rg-table {\n\twidth: 100%;\n\tmargin-bottom: 0.5em;\n\tfont-size: 1em;\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\ntable.rg-table tr {\n\t-moz-box-sizing: border-box;\n\tbox-sizing: border-box;\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n\ttext-align: left;\n\tcolor: #333;\n}\ntable.rg-table thead {\n\tborder-bottom: 1px solid #ddd;\n}\ntable.rg-table tr {\n\tborder-bottom: 1px solid #ddd;\n\tcolor: #222;\n}\ntable.rg-table tr.highlight {\n\tbackground: #efefef;\n}\ntable.rg-table.zebra tr:nth-child(even) {\n\tbackground: #efefef;\n}\ntable.rg-table th {\n\tfont-weight: bold;\n\tpadding: 0.35em;\n\tfont-size: 0.9em;\n}\ntable.rg-table td {\n\tpadding: 0.35em;\n\tfont-size: 0.9em;\n}\ntable.rg-table .highlight td {\n\tfont-weight: bold;\n}\ntable.rg-table th.number, td.number {\n\ttext-align: right;\n}\n\n/* media queries */\n@media screen and (max-width: ' + options.breakpoint + ') {\n.rg-container {\n\tmax-width: ' + options.breakpoint + ';\n\tmargin: 0 auto;\n}\ntable.rg-table {\n\tdisplay: block;\n\twidth: 100%;\n}\ntable.rg-table tr.hide-mobile, table.rg-table th.hide-mobile, table.rg-table td.hide-mobile {\n\tdisplay: none;\n}\ntable.rg-table thead {\n\tdisplay: none;\n}\ntable.rg-table tbody {\n\tdisplay: block;\n\twidth: 100%;\n}\ntable.rg-table tr, table.rg-table th, table.rg-table td {\n\tdisplay: block;\n\tpadding: 0;\n}\ntable.rg-table tr {\n\tborder-bottom: none;\n\tmargin: 0 0 1em 0;\n\tpadding: 0.5em 0;\n}\ntable.rg-table tr.highlight {\n\tbackground: none;\n}\ntable.rg-table.zebra tr:nth-child(even) {\n\tbackground: none;\n}\ntable.rg-table.zebra td:nth-child(even) {\n\tbackground: #efefef;\n}\ntable.rg-table tr:nth-child(even) {\n\tbackground: none;\n}\ntable.rg-table td {\n\tpadding: 0.5em 0 0.25em 0;\n\tborder-bottom: 1px dotted #ccc;\n\ttext-align: right;\n}\ntable.rg-table td[data-title]:before {\n\tcontent: attr(data-title);\n\tfont-weight: bold;\n\tdisplay: inline-block;\n\tcontent: attr(data-title);\n\tfloat: left;\n\tmargin-right: 0.5em;\n\tfont-size: 0.95em;\n}\ntable.rg-table td:last-child {\n\tpadding-right: 0;\n\tborder-bottom: 2px solid #ccc;\n}\ntable.rg-table td:empty {\n\tdisplay: none;\n}\ntable.rg-table .highlight td {\n\tbackground: none;\n}\n}\n</style>\n<div class=\'rg-container\'>\n\t<div class=\'rg-content\'>\n\t\t<table class=\'rg-table' + (options.zebra ? ' zebra' : '') + '\'>\n\t\t\t<caption class=\'rg-header\'>\n\t\t\t\t<span' + editable + ' class=\'rg-hed\'>' + copy.hed + '</span>\n\t\t\t\t<span' + editable + ' class=\'rg-dek\'>' + copy.dek + '</span>\n\t\t\t</caption>\n\t\t\t<thead>\n\t\t\t\t' + createTableHeaders() + '\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t' + createTableBody() + '\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t<div class=\'rg-source-and-credit\'>\n\t\t<div' + editable + ' class=\'rg-source\'>\n\t\t\t<span class=\'pre-colon\'>' + copy.sourcePre + '</span>: <span class=\'post-colon\'>' + copy.sourcePost + '</span>\n\t\t</div>\n\t</div>\n</div>\n\t\t').trim();
 	};
 
 	var createTable = function createTable() {
@@ -170,10 +170,9 @@
 			e.preventDefault();
 			if (!dev) ga('send', 'event', 'Get started', 'click', 'Get started button');
 			try {
-				var _parseInput = parseInput($('.input').val());
-
-				var names = _parseInput.names;
-				var data = _parseInput.data;
+				var _parseInput = parseInput($('.input').val()),
+				    names = _parseInput.names,
+				    data = _parseInput.data;
 
 				store.columns.names = names;
 				store.data = data;
@@ -238,7 +237,6 @@
 	};
 
 	var init = function init() {
-		console.log('v1.0.0');
 		bindEvents();
 	};
 

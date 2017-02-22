@@ -117,12 +117,12 @@
 		return `
 <style>@@include("../.tmp/table-style.css")</style>
 <div class='rg-container'>
-	<div class='rg-header'>
-		<div${editable} class='rg-hed'>${copy.hed}</div>
-		<div${editable} class='rg-dek'>${copy.dek}</div>
-	</div>
 	<div class='rg-content'>
 		<table class='rg-table${options.zebra ? ' zebra' : ''}'>
+			<caption class='rg-header'>
+				<span${editable} class='rg-hed'>${copy.hed}</span>
+				<span${editable} class='rg-dek'>${copy.dek}</span>
+			</caption>
 			<thead>
 				${createTableHeaders()}
 			</thead>

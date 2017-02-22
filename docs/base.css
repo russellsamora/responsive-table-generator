@@ -112,7 +112,7 @@ input {
 	text-decoration: none;
 	outline: none;
 }
-div[contenteditable=true] {
+div[contenteditable=true], span[contenteditable=true] {
 	border-bottom: 1px dashed #aaa;
 	outline: none;
 }
