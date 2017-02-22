@@ -124,7 +124,9 @@
 				<span${editable} class='rg-dek'>${copy.dek}</span>
 			</caption>
 			<thead>
-				${createTableHeaders()}
+				<tr>
+					${createTableHeaders()}
+				</tr>
 			</thead>
 			<tbody>
 				${createTableBody()}
