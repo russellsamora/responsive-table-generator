@@ -1,14 +1,19 @@
 /* info (hed, dek, source, credit) */
 .rg-container {
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: 'Lato', Helvetica, Arial, sans-serif;
 	font-size: 16px;
 	line-height: 1.4;
 	margin: 0;
 	padding: 1em 0.5em;
-	color: #1a1a1a;
+	color: #222;
 }
 .rg-header {
 	margin-bottom: 1em;
+	text-align: left;
+}
+
+.rg-header > * {
+	display: block;
 }
 .rg-hed {
 	font-weight: bold;
@@ -17,18 +22,18 @@
 .rg-dek {
 	font-size: 1em;
 }
-.rg-source-and-credit {
-	width: 100%;
-	overflow: hidden;
-}
+
 .rg-source {
 	margin: 0;
-	float: left;
-	font-weight: bold;
 	font-size: 0.75em;
+	text-align: right;
 }
 .rg-source .pre-colon {
 	text-transform: uppercase;
+}
+
+.rg-source .post-colon {
+	font-weight: bold;
 }
 
 /* table */
@@ -39,7 +44,7 @@ table.rg-table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-table.rg-table * {
+table.rg-table tr {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	margin: 0;
@@ -52,21 +57,22 @@ table.rg-table * {
 	color: #333;
 }
 table.rg-table thead {
-	border-bottom: 1px solid #ddd;
+	border-bottom: 3px solid #ddd;
+	background-color: #f9fafb;
 }
 table.rg-table tr {
 	border-bottom: 1px solid #ddd;
 	color: #222;
 }
 table.rg-table tr.highlight {
-	background: #efefef;
+	background-color: #dcf1f0 !important;
 }
 table.rg-table.zebra tr:nth-child(even) {
-	background: #efefef;
+	background-color: #f9fafb;
 }
 table.rg-table th {
 	font-weight: bold;
-	padding: 0.35em;
+	padding: 0.75em;
 	font-size: 0.9em;
 }
 table.rg-table td {
@@ -87,7 +93,6 @@ table.rg-table th.number, td.number {
 	margin: 0 auto;
 }
 table.rg-table {
-	display: block;
 	width: 100%;
 }
 table.rg-table tr.hide-mobile, table.rg-table th.hide-mobile, table.rg-table td.hide-mobile {
@@ -97,7 +102,6 @@ table.rg-table thead {
 	display: none;
 }
 table.rg-table tbody {
-	display: block;
 	width: 100%;
 }
 table.rg-table tr, table.rg-table th, table.rg-table td {
@@ -107,19 +111,19 @@ table.rg-table tr, table.rg-table th, table.rg-table td {
 table.rg-table tr {
 	border-bottom: none;
 	margin: 0 0 1em 0;
-	padding: 0.5em 0;
+	padding: 0.5em;
 }
 table.rg-table tr.highlight {
-	background: none;
+	background-color: none;
 }
 table.rg-table.zebra tr:nth-child(even) {
-	background: none;
+	background-color: none;
 }
 table.rg-table.zebra td:nth-child(even) {
-	background: #efefef;
+	background-color: #f9fafb;
 }
 table.rg-table tr:nth-child(even) {
-	background: none;
+	background-color: none;
 }
 table.rg-table td {
 	padding: 0.5em 0 0.25em 0;
@@ -143,6 +147,6 @@ table.rg-table td:empty {
 	display: none;
 }
 table.rg-table .highlight td {
-	background: none;
+	background-color: none;
 }
 }

@@ -115,26 +115,29 @@
 
 	const createHTML = ({ editable }) => {
 		return `
-<style>@@include("../.tmp/table-style.css")</style>
+<style>
+	@import url('https://fonts.googleapis.com/css?family=Lato:400,900');
+	@@include("../.tmp/table-style.css")
+</style>
 <div class='rg-container'>
-	<div class='rg-header'>
-		<div${editable} class='rg-hed'>${copy.hed}</div>
-		<div${editable} class='rg-dek'>${copy.dek}</div>
-	</div>
 	<div class='rg-content'>
-		<table class='rg-table${options.zebra ? ' zebra' : ''}'>
+		<table class='rg-table${options.zebra ? ' zebra' : ''}' summary='${copy.hed}'>
+			<caption class='rg-header'>
+				<span${editable} class='rg-hed'>${copy.hed}</span>
+				<span${editable} class='rg-dek'>${copy.dek}</span>
+			</caption>
 			<thead>
-				${createTableHeaders()}
+				<tr>
+					${createTableHeaders()}
+				</tr>
 			</thead>
 			<tbody>
 				${createTableBody()}
 			</tbody>
 		</table>
 	</div>
-	<div class='rg-source-and-credit'>
-		<div${editable} class='rg-source'>
-			<span class='pre-colon'>${copy.sourcePre}</span>: <span class='post-colon'>${copy.sourcePost}</span>
-		</div>
+	<div class='rg-source'>
+		<span${editable} class='pre-colon'>${copy.sourcePre}</span>: <span${editable} class='post-colon'>${copy.sourcePost}</span>
 	</div>
 </div>
 		`.trim()
