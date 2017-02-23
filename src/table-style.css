@@ -64,7 +64,7 @@ table.rg-table tr {
 	color: #222;
 }
 table.rg-table tr.highlight {
-	background-color: #dcf1f0 !important;
+	background-color: #daefe4 !important;
 }
 table.rg-table.zebra tr:nth-child(even) {
 	background-color: #f6f6f6;
