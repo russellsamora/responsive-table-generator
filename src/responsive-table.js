@@ -119,22 +119,20 @@
 	@@include("../.tmp/table-style.css")
 </style>
 <div class='rg-container'>
-	<div class='rg-content'>
-		<table class='rg-table${options.zebra ? ' zebra' : ''}' summary='${copy.hed}'>
-			<caption class='rg-header'>
-				<span${editable} class='rg-hed'>${copy.hed}</span>
-				<span${editable} class='rg-dek'>${copy.dek}</span>
-			</caption>
-			<thead>
-				<tr>
-					${createTableHeaders()}
-				</tr>
-			</thead>
-			<tbody>
-				${createTableBody()}
-			</tbody>
-		</table>
-	</div>
+	<table class='rg-table${options.zebra ? ' zebra' : ''}' summary='${copy.hed}'>
+		<caption class='rg-header'>
+			<span${editable} class='rg-hed'>${copy.hed}</span>
+			<span${editable} class='rg-dek'>${copy.dek}</span>
+		</caption>
+		<thead>
+			<tr>
+				${createTableHeaders()}
+			</tr>
+		</thead>
+		<tbody>
+			${createTableBody()}
+		</tbody>
+	</table>
 	<div class='rg-source'>
 		<span${editable} class='pre-colon'>${copy.sourcePre}</span>: <span${editable} class='post-colon'>${copy.sourcePost}</span>
 	</div>
