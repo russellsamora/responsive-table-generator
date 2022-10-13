@@ -1,19 +1,19 @@
 {
-  "name": "responsive-table-generator",
-  "version": "2.0.1",
-  "description": "HTML/CSS only responsive table generator for your next table.",
-  "author": "russell goldenberg",
-  "homepage": "https://github.com/russellgoldenberg/responsive-table-generator",
-  "dependencies": {},
-  "devDependencies": {
-    "babel-preset-es2015": "^6.16.0",
-    "babel-preset-stage-1": "^6.16.0",
-    "browser-sync": "^2.17.0",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
-    "gulp-file-include": "^1.0.0",
-    "gulp-replace-task": "^0.11.0",
-    "gulp-smoosher": "0.0.9",
-    "gulp-uglify": "^2.0.0"
-  }
+	"name": "responsive-table-generator",
+	"version": "2.0.1",
+	"description": "HTML/CSS only responsive table generator for your next table.",
+	"author": "russell samora",
+	"homepage": "https://github.com/russellsamora/responsive-table-generator",
+	"dependencies": {},
+	"devDependencies": {
+		"babel-preset-es2015": "^6.16.0",
+		"babel-preset-stage-1": "^6.16.0",
+		"browser-sync": "^2.17.0",
+		"gulp": "^3.9.1",
+		"gulp-babel": "^6.1.2",
+		"gulp-file-include": "^1.0.0",
+		"gulp-replace-task": "^0.11.0",
+		"gulp-smoosher": "0.0.9",
+		"gulp-uglify": "^2.0.0"
+	}
 }
